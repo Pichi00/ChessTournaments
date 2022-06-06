@@ -1,0 +1,55 @@
+﻿<Window x:Class="ChessTournaments.View.LoginScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChessTournaments.View"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:vm="clr-namespace:ChessTournaments.ViewModel"
+        mc:Ignorable="d"
+        Title="Logowanie" Height="300" Width="400"
+        x:Name="loginScreen">
+
+    <Window.DataContext>
+        <vm:LoginViewModel x:Name="loginViewModel"/>
+    </Window.DataContext>
+
+    <Grid>
+        <StackPanel>
+            <Label Content="Nazwa użytkownika"/>
+            
+            <TextBox x:Name="UsernameTextBox" 
+                     Margin="5 0 0 0"
+                     Width="250"
+                     HorizontalAlignment="Left"/>
+            
+            <Label Content="Hasło"/>
+            
+            <PasswordBox x:Name="PasswordTextBox" 
+                         Margin="5 0 0 0" 
+                         Width="250"
+                         HorizontalAlignment="Left"/>
+
+            <Button Content="Zaloguj się"
+                    Width="100"
+                    Margin="5 20 5 20"
+                    HorizontalAlignment="Left"/>
+            <TextBlock Text="Nie posiadasz konta?"/>
+            
+            <TextBlock>
+                <Hyperlink>
+                    Zarejestruj się
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding GoToRegisterScreenEvent}"
+                                                   CommandParameter="{Binding ElementName=loginScreen}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Hyperlink>
+                
+            </TextBlock>
+            
+        </StackPanel>
+            
+    </Grid>
+</Window>
