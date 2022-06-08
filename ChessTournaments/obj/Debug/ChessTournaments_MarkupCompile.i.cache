@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\obj\Debug\
+E:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\obj\Debug\
 ChessTournaments
 none
 false
 DEBUG;TRACE
-D:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\App.xaml
-51411927156
+E:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\App.xaml
+4540765016
 
-151393677321
-15-1089152257
-View\LoginScreen.xaml;View\MainWindow.xaml;View\OrganizerDashboard.xaml;View\PlayerDashboard.xaml;View\RegisterScreen.xaml;
+161883045317
+34-1114705581
+View\LoginScreen.xaml;View\OrganizerDashboard.xaml;View\PlayerDashboard.xaml;View\RegisterScreen.xaml;
 
-True
+False
 
