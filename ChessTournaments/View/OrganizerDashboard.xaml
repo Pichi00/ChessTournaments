@@ -7,6 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <TabControl>
+            <TabItem x:Name="turnieje" Header="Turnieje">
+                
             
+            </TabItem>
+            <TabItem x:Name="mojeTurnieje" Header="Moje Turnieje"></TabItem>
+        </TabControl>
     </Grid>
 </UserControl>

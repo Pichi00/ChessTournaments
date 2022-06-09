@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-C:\Users\wobro\PycharmProjects\chess_database\ChessTournaments\ChessTournaments\obj\Debug\
+C:\Users\wobro\PycharmProjects\chess_database\ChessTournaments\ChessTournaments\obj\Release\
 ChessTournaments
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\wobro\PycharmProjects\chess_database\ChessTournaments\ChessTournaments\App.xaml
 5314407197
 
@@ -16,5 +16,5 @@ C:\Users\wobro\PycharmProjects\chess_database\ChessTournaments\ChessTournaments\
 15-1945537298
 View\LoginScreen.xaml;View\MainWindow.xaml;View\OrganizerDashboard.xaml;View\PlayerDashboard.xaml;View\RegisterScreen.xaml;
 
-False
+True
 
