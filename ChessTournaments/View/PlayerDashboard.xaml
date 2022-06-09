@@ -9,100 +9,35 @@
              d:DesignHeight="450" d:DesignWidth="850">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10*"/>
-            <ColumnDefinition Width="4*"/>
-        </Grid.ColumnDefinitions>
+     
         <TabControl >
                 <TabItem x:Name="turnieje" Header="Turnieje">
-                <ListView x:Name="viewTurnieje" Grid.Column="0"  
-                              SelectedItem="{Binding TurniejeViewModel.BiezacyTurniej}" 
-                              ItemsSource="{Binding TurniejeViewModel.Turnieje}"
-                              SelectedIndex="{Binding TurniejeViewModel.IndeksZaznaczonegoTurnieju, Mode=TwoWay}" Margin="0,-4,0.4,4.6"
-                    >
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="SelectionChanged">
-                            <i:InvokeCommandAction Command="{Binding TurniejeViewModel.zaladujTurnieje}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
 
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Width="100" x:Name="kolTurnieje">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding turniejeNazwa}" FontSize="14"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                                <TextBlock Text="Nazwa"></TextBlock>
-                            </GridViewColumn>
-
-                            <GridViewColumn Width="100" x:Name="kolMiasto">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding turniejeMiasto}" />
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                                <GridViewColumn.Header>
-                                    <TextBlock Text="Miasto"></TextBlock>
-                                </GridViewColumn.Header>
-                            </GridViewColumn>
-
-                            <GridViewColumn Width="100" x:Name="kolStart">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding dataRozpoczecia }" />
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                                <GridViewColumn.Header>
-                                    <TextBlock Text="Start Turnieju"></TextBlock>
-                                </GridViewColumn.Header>
-                            </GridViewColumn>
-
-                            <GridViewColumn Width="100" x:Name="kolKoniec">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding dataZakonczenia }" />
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                                <GridViewColumn.Header>
-                                    <TextBlock Text="Koniec Turnieju"></TextBlock>
-                                </GridViewColumn.Header>
-                            </GridViewColumn>
-
-
-                            <GridViewColumn Width="100" x:Name="kolPulaNagrod">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding pulaNagrod }" />
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                                <GridViewColumn.Header>
-                                    <TextBlock Text="Pula nagród"></TextBlock>
-                                </GridViewColumn.Header>
-                            </GridViewColumn>
-
-                            <GridViewColumn Width="100" x:Name="kolOrganizator">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding organizator }" />
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                                <GridViewColumn.Header>
-                                    <TextBlock Text="Organizator"></TextBlock>
-                                </GridViewColumn.Header>
-                            </GridViewColumn>
-
-
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+                    <local:TournamentList Grid.Column="0">
+                        
+                    </local:TournamentList>
                     
                     <!--regulamin-->
+                    <Grid Background="#fff" Grid.Column="1">
+                        <TextBlock HorizontalAlignment="Center" >Regulamin</TextBlock>
+                        <TextBlock TextWrapping="WrapWithOverflow" Padding="10" Text="{Binding regulamin }"></TextBlock>
+                        <Button
+                           Margin="10" 
+                           VerticalAlignment="Bottom"
+                           Command="{Binding AddStatus}">Wyślij zgłoszenie</Button>
+                    </Grid>
+                </Grid>
+
+             
 
                     
             </TabItem>
-                <TabItem x:Name="mojeTurnieje" Header="Moje Turnieje"></TabItem>
+                <TabItem x:Name="mojeTurnieje" Header="Moje Turnieje" HorizontalAlignment="Center"></TabItem>
             </TabControl>
     </Grid>
 </UserControl>
