@@ -78,3 +78,5 @@ D:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\bin\Debug\Sys
 D:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\bin\Debug\System.Memory.xml
 D:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\bin\Debug\System.Numerics.Vectors.xml
 D:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\obj\Debug\View\TournamentList.g.cs
+D:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\obj\Debug\View\TournamentList.baml
