@@ -19,5 +19,14 @@ namespace ChessTournaments.DAL.Encje
         #region Konstruktory
 
         #endregion
+
+        #region Metody
+
+        public string ToInsert()
+        {
+            return $"{Login}, {Haslo}, {TypKonta}";
+        }
+
+        #endregion
     }
 }
