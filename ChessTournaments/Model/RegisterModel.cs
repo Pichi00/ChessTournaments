@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections.ObjectModel;
+
 
 namespace ChessTournaments.Model
 {
     using DAL.Encje;
     using DAL.Repozytoria;
 
-    class RegisterModel
+    class RegisterModel:AuthenticationModel
     {
-        public ObservableCollection<Uzytkownik> Uzytkownicy { get; set; } = new ObservableCollection<Uzytkownik>();
-
+        
         public RegisterModel()
         {
             var uzytkownicy = RepozytoriumUzytkownicy.PobierzWszystkichUzytkownikow();
@@ -23,21 +22,16 @@ namespace ChessTournaments.Model
             }
         }
 
-        public bool CzyUzytkownikJuzWRepozytorium(Uzytkownik uzytkownik)
-        {
-            return Uzytkownicy.Contains(uzytkownik);
-        }
-
         public bool DodajUzytkownikaDoBazy(Uzytkownik uzytkownik)
         {
-            if(!CzyUzytkownikJuzWRepozytorium(uzytkownik))
+            if (!CzyUzytkownikJuzWRepozytorium(uzytkownik))
             {
                 if (RepozytoriumUzytkownicy.DodajUzytkownikaDoBazy(uzytkownik))
                 {
-                    Uzytkownicy.Add(uzytkownik);
+                    Uzytkownicy.Add(uzytkownik.Login);
                     return true;
                 }
-                
+
             }
             return false;
         }

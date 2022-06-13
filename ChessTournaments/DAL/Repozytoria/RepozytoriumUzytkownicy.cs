@@ -14,13 +14,14 @@ namespace ChessTournaments.DAL.Repozytoria
 
         private const string DODAJ_UZYTKOWNIKA = "INSERT INTO `uzytkownicy`(`login`, `haslo`, `rodzajKonta`) VALUES ";
         private const string WSZYSCY_UZYTKOWNICY = "SELECT * FROM uzytkownicy";
+        private const string HASLO_DLA_UZYTKOWNIKA = "SELECT * FROM uzytkownicy WHERE login LIKE ";
         #endregion
 
         #region Metody
 
-        public static List<Uzytkownik> PobierzWszystkichUzytkownikow()
+        public static List<string> PobierzWszystkichUzytkownikow()
         {
-            List<Uzytkownik> list = new List<Uzytkownik>();
+            List<string> list = new List<string>();
 
             using (var connection = DBConnection.Instance.Connection)
             {
@@ -29,7 +30,7 @@ namespace ChessTournaments.DAL.Repozytoria
                 var reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    list.Add(new Uzytkownik(reader));
+                    list.Add(new Uzytkownik(reader).Login);
                 }
 
                 connection.Close();
@@ -52,6 +53,20 @@ namespace ChessTournaments.DAL.Repozytoria
             }
 
             return stan;
+        }
+
+        public static string PobierzHasloDlaUzytkownika(Uzytkownik uzytkownik)
+        {
+            string haslo = "";
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command = new MySqlCommand($"{HASLO_DLA_UZYTKOWNIKA} '{uzytkownik.Login}'", connection);
+                connection.Open();
+                var reader = command.ExecuteReader();
+                while(reader.Read())
+                    haslo = reader["haslo"].ToString();
+            }
+            return haslo;
         }
 
         #endregion

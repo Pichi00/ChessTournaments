@@ -21,19 +21,28 @@
             <TextBox x:Name="UsernameTextBox" 
                      Margin="5 0 0 0"
                      Width="250"
-                     HorizontalAlignment="Left"/>
+                     HorizontalAlignment="Left"
+                     Text="{Binding Login}"/>
             
             <Label Content="Hasło"/>
             
             <PasswordBox x:Name="PasswordTextBox" 
                          Margin="5 0 0 0" 
                          Width="250"
-                         HorizontalAlignment="Left"/>
+                         HorizontalAlignment="Left"
+                         PasswordChanged="PasswordTextBox_PasswordChanged"/>
 
             <Button Content="Zaloguj się"
                     Width="100"
                     Margin="5 20 5 20"
-                    HorizontalAlignment="Left"/>
+                    HorizontalAlignment="Left">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding LoginUser}"
+                                               CommandParameter="{Binding ElementName=loginScreen}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
             <TextBlock Text="Nie posiadasz konta?"/>
             
             <TextBlock>
