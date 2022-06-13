@@ -33,6 +33,13 @@ namespace ChessTournaments.Model
             }
             return false;
         }
+
+        public Uzytkownik.TypyKont PobierzTypKonta(string login)
+        {
+            Uzytkownik.TypyKont typKonta = RepozytoriumUzytkownicy.PobierzTypKontaDlaUzytkownika(login);
+
+            return typKonta;
+        }
        
     }
 }

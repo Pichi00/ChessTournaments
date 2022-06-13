@@ -18,7 +18,7 @@ namespace ChessTournaments.View
     /// <summary>
     /// Logika interakcji dla klasy PlayerDashboard.xaml
     /// </summary>
-    public partial class PlayerDashboard : UserControl
+    public partial class PlayerDashboard : Window
     {
         public PlayerDashboard()
         {

@@ -18,7 +18,7 @@ namespace ChessTournaments.View
     /// <summary>
     /// Logika interakcji dla klasy OrganizerDashboard.xaml
     /// </summary>
-    public partial class OrganizerDashboard : UserControl
+    public partial class OrganizerDashboard : Window
     {
         public OrganizerDashboard()
         {
