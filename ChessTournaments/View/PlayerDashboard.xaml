@@ -14,17 +14,16 @@
             <TabItem x:Name="turnieje" Header="Turnieje">
                 <Grid >
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="112*"/>
-                        <ColumnDefinition Width="491*"/>
-                        <ColumnDefinition Width="241*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="5*"/>
                     </Grid.ColumnDefinitions>
 
-                    <local:TournamentList Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0.2,-0.4">
+                    <local:TournamentList Grid.Column="0" Grid.ColumnSpan="2">
 
                     </local:TournamentList>
 
                     <!--regulamin-->
-                    <Grid Background="#fff" Grid.Column="1" Grid.ColumnSpan="2" Margin="491,0,0,-0.4">
+                    <Grid Background="#fff" Grid.Column="1" >
                         <TextBlock HorizontalAlignment="Center" >Regulamin</TextBlock>
                         <TextBlock TextWrapping="WrapWithOverflow" Padding="10" Text="{Binding regulamin }"></TextBlock>
                         <Button
@@ -52,7 +51,7 @@
                     <StackPanel Grid.Column="0">
 
                         <StackPanel Orientation="Horizontal" Margin="10">
-                            <TextBlock Text="{Binding biezaceTurniej}" ></TextBlock>
+                            <TextBlock Text="{Binding biezacyTurniej}" ></TextBlock>
                         </StackPanel>
 
                         <StackPanel HorizontalAlignment="Center" >
