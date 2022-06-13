@@ -17,11 +17,18 @@ namespace ChessTournaments.View
     /// <summary>
     /// Logika interakcji dla klasy RegisterScreen.xaml
     /// </summary>
+    /// 
+    using ViewModel;
     public partial class RegisterScreen : Window
     {
         public RegisterScreen()
         {
             InitializeComponent();
+        }
+
+        private void PasswordTextBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            registerViewModel.Haslo = PasswordTextBox.Password;
         }
     }
 }

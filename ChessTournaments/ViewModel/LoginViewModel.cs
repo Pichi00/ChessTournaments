@@ -10,7 +10,8 @@ using ChessTournaments.Model;
 namespace ChessTournaments.ViewModel
 {
     using View;
-    public class LoginViewModel
+    using BaseClasses;
+    class LoginViewModel:ViewModelBase
     {
         private ICommand goToRegisterScreen;
         public ICommand GoToRegisterScreenEvent => goToRegisterScreen ?? (goToRegisterScreen =

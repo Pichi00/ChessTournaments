@@ -2,10 +2,10 @@ create database chess;
 use chess;
 
 create table uzytkownicy(
-     username varchar(30) not null,
+     login varchar(30) not null,
      haslo varchar(30) not null, 
      rodzajKonta enum("organizator","zawodnik") not null,
-     primary key(username));
+     primary key(login));
      
 create table sedziowie(
      idSedziego tinyint unsigned not null auto_increment,
@@ -19,9 +19,9 @@ create table sedziowie(
 create table organizatorzy(
 	idOrganizatora tinyint unsigned not null auto_increment,
 	nazwa varchar(40),
-	username varchar(30) unique not null,
+	login varchar(30) unique not null,
 	primary key(idOrganizatora),
-	foreign KEY(username) references uzytkownicy(username)
+	foreign KEY(login) references uzytkownicy(login)
 );
 
 
@@ -53,9 +53,9 @@ create table zawodnicy(
 	dataUrodzenia date,
 	plec enum("M","F"),
 	ranking int,
-	username varchar(30) unique not null,
+	login varchar(30) unique not null,
 	primary key(idZawodnika),
-	foreign key(username) references uzytkownicy(username)
+	foreign key(login) references uzytkownicy(login)
 );
 
 create table statusZawodnika(

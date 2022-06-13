@@ -12,13 +12,33 @@ namespace ChessTournaments.DAL.Repozytoria
     {
         #region Zapytania
 
-        private const string DODAJ_UZYTKOWNIKA = "INSERT INTO `uzytkownicy`(`login`, `haslo`, `typ_konta`) VALUES ";
-
+        private const string DODAJ_UZYTKOWNIKA = "INSERT INTO `uzytkownicy`(`login`, `haslo`, `rodzajKonta`) VALUES ";
+        private const string WSZYSCY_UZYTKOWNICY = "SELECT * FROM uzytkownicy";
         #endregion
 
         #region Metody
 
-        private static bool DodajUzytkownikaDoBazy( Uzytkownik uzytkownik)
+        public static List<Uzytkownik> PobierzWszystkichUzytkownikow()
+        {
+            List<Uzytkownik> list = new List<Uzytkownik>();
+
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command = new MySqlCommand(WSZYSCY_UZYTKOWNICY, connection);
+                connection.Open();
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    list.Add(new Uzytkownik(reader));
+                }
+
+                connection.Close();
+            }
+
+                return list;
+        }
+
+        public static bool DodajUzytkownikaDoBazy( Uzytkownik uzytkownik)
         {
             bool stan = false;
 
