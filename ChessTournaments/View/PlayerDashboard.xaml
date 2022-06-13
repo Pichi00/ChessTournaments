@@ -6,24 +6,25 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:local="clr-namespace:ChessTournaments.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="850">
+             d:DesignHeight="450" d:DesignWidth="900">
 
     <Grid>
-     
+
         <TabControl >
-                <TabItem x:Name="turnieje" Header="Turnieje">
+            <TabItem x:Name="turnieje" Header="Turnieje">
                 <Grid >
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10*"/>
-                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="112*"/>
+                        <ColumnDefinition Width="491*"/>
+                        <ColumnDefinition Width="241*"/>
                     </Grid.ColumnDefinitions>
 
-                    <local:TournamentList Grid.Column="0">
-                        
+                    <local:TournamentList Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0.2,-0.4">
+
                     </local:TournamentList>
-                    
+
                     <!--regulamin-->
-                    <Grid Background="#fff" Grid.Column="1">
+                    <Grid Background="#fff" Grid.Column="1" Grid.ColumnSpan="2" Margin="491,0,0,-0.4">
                         <TextBlock HorizontalAlignment="Center" >Regulamin</TextBlock>
                         <TextBlock TextWrapping="WrapWithOverflow" Padding="10" Text="{Binding regulamin }"></TextBlock>
                         <Button
@@ -33,11 +34,36 @@
                     </Grid>
                 </Grid>
 
-             
 
-                    
+
+
             </TabItem>
-                <TabItem x:Name="mojeTurnieje" Header="Moje Turnieje" HorizontalAlignment="Center"></TabItem>
-            </TabControl>
+            <TabItem x:Name="mojeTurnieje" Header="Moje Turnieje" HorizontalAlignment="Center">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <local:TournamentList Grid.Column="1">
+                        
+                    </local:TournamentList>
+                    
+                    <StackPanel Grid.Column="0">
+
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Text="{Binding biezaceTurniej}" ></TextBlock>
+                        </StackPanel>
+
+                        <StackPanel HorizontalAlignment="Center" >
+                            <Button
+                           Margin="10" 
+                           Command="{Binding Delregistration}">Usun zgloszenie</Button>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </UserControl>
