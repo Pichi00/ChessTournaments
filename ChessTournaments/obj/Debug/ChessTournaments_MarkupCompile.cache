@@ -12,14 +12,9 @@ DEBUG;TRACE
 C:\Users\wobro\PycharmProjects\chess_database\ChessTournaments\ChessTournaments\App.xaml
 51234259330
 
-<<<<<<< HEAD
-20960238300
-341652830201
-=======
-18554445737
+21748791080
 34360193048
->>>>>>> db_show
 View\LoginScreen.xaml;View\OrganizerDashboard.xaml;View\PlayerDashboard.xaml;View\RegisterScreen.xaml;View\TournamentList.xaml;
 
-False
+True
 
