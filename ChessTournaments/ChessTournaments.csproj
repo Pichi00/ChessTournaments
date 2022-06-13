@@ -109,6 +109,7 @@
     <Compile Include="DAL\Repozytoria\RepozytoriumUzytkownicy.cs" />
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Model\RegisterModel.cs" />
+    <Compile Include="ViewModel\BaseClasses\ViewModelBase.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\RegisterViewModel.cs" />
     <Compile Include="ViewModel\BaseClasses\RelayCommand.cs" />

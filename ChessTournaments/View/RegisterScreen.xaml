@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChessTournaments.View" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
+        
         xmlns:vm="clr-namespace:ChessTournaments.ViewModel"
         Title="Rejestracja" Height="300" Width="400"
         x:Name="registerScreen">
@@ -19,29 +20,42 @@
             <TextBox x:Name="UsernameTextBox" 
                      Margin="5 0 0 0"
                      Width="250"
-                     HorizontalAlignment="Left"/>
+                     HorizontalAlignment="Left"
+                     Text="{Binding Login}"/>
 
             <Label Content="Hasło"/>
 
             <PasswordBox x:Name="PasswordTextBox" 
                          Margin="5 0 0 0" 
                          Width="250"
-                         HorizontalAlignment="Left"/>
+                         HorizontalAlignment="Left"
+                         PasswordChanged="PasswordTextBox_PasswordChanged"
+                         />
             
             <Label Content="Typ konta"/>
 
             <ComboBox Margin="5 0 0 0" 
                       Width="250"
-                      HorizontalAlignment="Left">
-                <ComboBoxItem Content="Gracz"/>
-                <ComboBoxItem Content="Organizator"/>
+                      HorizontalAlignment="Left"
+                      SelectedValue="{Binding TypKontaString}">
+                <ComboBoxItem Content="ORGANIZATOR"/>
+                <ComboBoxItem Content="ZAWODNIK"/>
             </ComboBox>
-            
+
             <Button Content="Zarejestruj się"
                     Width="100"
                     Margin="5 20 5 20"
-                    HorizontalAlignment="Left"/>
-            
+                    HorizontalAlignment="Left">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding RegisterUser}" 
+                                               CommandParameter="{Binding ElementName=registerScreen}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+            </Button>
+
             <TextBlock Text="Posiadasz już konto?"/>
 
             <TextBlock>
