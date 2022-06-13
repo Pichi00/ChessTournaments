@@ -6,29 +6,26 @@
              xmlns:local="clr-namespace:ChessTournaments.View"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="850">
+             d:DesignHeight="450" d:DesignWidth="900">
     <Grid>
         <TabControl >
             <TabItem x:Name="turnieje" Header="Turnieje">
                 <Grid >
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="105*"/>
-                        <ColumnDefinition Width="498*"/>
-                        <ColumnDefinition Width="241*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="5*"/>
+
                     </Grid.ColumnDefinitions>
 
-                    <local:TournamentList Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0.2,-0.4">
+                    <local:TournamentList Grid.Column="0" >
 
                     </local:TournamentList>
 
                     <!--regulamin-->
-                    <Grid Background="#fff" Grid.Column="1" Grid.ColumnSpan="2" Margin="498.2,0,0,-0.4">
+                    <Grid Background="#fff" Grid.Column="1" >
                         <TextBlock HorizontalAlignment="Center" >Regulamin</TextBlock>
                         <TextBlock TextWrapping="WrapWithOverflow" Padding="10" Text="{Binding regulamin }"></TextBlock>
-                        <Button
-                           Margin="10" 
-                           VerticalAlignment="Bottom"
-                           Command="{Binding AddStatus}">Wyślij zgłoszenie</Button>
+
                     </Grid>
                 </Grid>
 
@@ -36,7 +33,151 @@
 
 
             </TabItem>
-            <TabItem x:Name="addTurnament" Header="Dodaj Turniej" HorizontalAlignment="Center"></TabItem>
+            <TabItem x:Name="addTurnament" Header="Dodaj Turniej" >
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <local:TournamentList Grid.Column="1">
+
+                    </local:TournamentList>
+
+                    <!--formularz-->
+
+                    <StackPanel Background="#fff" Grid.Column="0">
+                        <TextBlock Text="Nazwa:"/>
+                        <TextBox x:Name="nazwa"  Text="{Binding TurniejeViewModel.Nazwa}"/>
+                        <TextBlock Text="Miasto:"/>
+                        <TextBox x:Name="miasto" Text="{Binding TurniejeViewModel.Miasto}"/>
+
+                        <TextBlock Text="Start turnieju:"/>
+                        <TextBox x:Name="start" Text="{Binding TurniejeViewModel.Start}"/>
+
+                        <TextBlock Text="Koniec Turnieju:"/>
+                        <TextBox x:Name="koniec" Text="{Binding TurniejeViewModel.Koniec}"/>
+                        <TextBlock Text="Póla nagród:"/>
+                        <TextBox x:Name="nagrody" Text="{Binding TurniejeViewModel.nagrody}"/>
+
+                        <TextBlock Text="Regulamin:"/>
+                        <TextBox x:Name="regulamin" TextWrapping="Wrap" Height="150" Text="{Binding TurniejeViewModel.regulamin}"/>
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                            <Button
+                           Margin="10" 
+                           Command="{Binding AddTournament}">Dodaj turniej</Button>
+                            <Button
+                           Margin="10" 
+                           Command="{Binding EditTournament}">Edytuj turniej</Button>
+
+                            <Button
+                           Margin="10"
+                           Command="{Binding DelTournament}">Usun turniej</Button>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+
+
+
+
+            <TabItem Header="Zgłoszenaia do turnieju">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="97*"/>
+                        <ColumnDefinition Width="201*"/>
+                        <ColumnDefinition Width="596*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListView x:Name="viewTurnieje" Grid.Column="2"
+                              SelectedItem="{Binding TurniejeViewModel.BiezacyZawodnicy}" 
+                              ItemsSource="{Binding TurniejeViewModel.Zawodnicy}"
+                              SelectedIndex="{Binding TurniejeViewModel.IndeksZaznaczonegoZawodnika, Mode=TwoWay}" 
+                    >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding TurniejeViewModel.zaladujZawodnikow}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                        <ListView.View >
+                            <GridView>
+                                <GridViewColumn Width="100" x:Name="kolImie">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding turniejeImie}" FontSize="14"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                    <TextBlock Text="Imię"></TextBlock>
+                                </GridViewColumn>
+
+                                <GridViewColumn Width="100" x:Name="kolNazwiso">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding turniejeNazwisko}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                    <GridViewColumn.Header>
+                                        <TextBlock Text="Nazwisko"></TextBlock>
+                                    </GridViewColumn.Header>
+                                </GridViewColumn>
+
+                                <GridViewColumn Width="100" x:Name="kolDataUrodzenia">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding dataUrozdzenia}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                    <GridViewColumn.Header>
+                                        <TextBlock Text="Data urodzenia"></TextBlock>
+                                    </GridViewColumn.Header>
+                                </GridViewColumn>
+
+
+                                <GridViewColumn Width="100" x:Name="kolRanking">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding ranking }" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                    <GridViewColumn.Header>
+                                        <TextBlock Text="Ranking"></TextBlock>
+                                    </GridViewColumn.Header>
+                                </GridViewColumn>
+
+                                <GridViewColumn Width="100" x:Name="kolPłec">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding plec }" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                    <GridViewColumn.Header>
+                                        <TextBlock Text="Płeć"></TextBlock>
+                                    </GridViewColumn.Header>
+                                </GridViewColumn>
+
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Grid.Column="0" Grid.ColumnSpan="2">
+
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Text="{Binding biezaceImie}" ></TextBlock>
+                            <TextBlock Text="{Binding biezaceNazwisko}" ></TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Padding="10" >Status:</TextBlock>
+                            <CheckBox VerticalAlignment="Center">
+                            </CheckBox>
+                        </StackPanel>
+
+
+                    </StackPanel>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </UserControl>

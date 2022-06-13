@@ -6,7 +6,7 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:local="clr-namespace:ChessTournaments.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="850">
+             d:DesignHeight="450" d:DesignWidth="900">
 
     <Grid>
 
@@ -15,15 +15,15 @@
                 <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
-                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="5*"/>
                     </Grid.ColumnDefinitions>
 
-                    <local:TournamentList Grid.Column="0">
+                    <local:TournamentList Grid.Column="0" Grid.ColumnSpan="2">
 
                     </local:TournamentList>
 
                     <!--regulamin-->
-                    <Grid Background="#fff" Grid.Column="1">
+                    <Grid Background="#fff" Grid.Column="1" >
                         <TextBlock HorizontalAlignment="Center" >Regulamin</TextBlock>
                         <TextBlock TextWrapping="WrapWithOverflow" Padding="10" Text="{Binding regulamin }"></TextBlock>
                         <Button
@@ -37,7 +37,32 @@
 
 
             </TabItem>
-            <TabItem x:Name="mojeTurnieje" Header="Moje Turnieje" HorizontalAlignment="Center"></TabItem>
+            <TabItem x:Name="mojeTurnieje" Header="Moje Turnieje" HorizontalAlignment="Left" Margin="0,-2,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <local:TournamentList Grid.Column="1">
+
+                    </local:TournamentList>
+
+                    <StackPanel Grid.Column="0">
+
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Text="{Binding biezacyTurniej}" ></TextBlock>
+                        </StackPanel>
+
+                        <StackPanel HorizontalAlignment="Center" >
+                            <Button
+                           Margin="10" 
+                           Command="{Binding Delregistration}">Usun zgloszenie</Button>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </UserControl>
