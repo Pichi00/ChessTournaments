@@ -107,8 +107,10 @@
     <Compile Include="DAL\DBConnection.cs" />
     <Compile Include="DAL\Encje\Uzytkownik.cs" />
     <Compile Include="DAL\Repozytoria\RepozytoriumUzytkownicy.cs" />
+    <Compile Include="Model\AuthenticationModel.cs" />
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Model\RegisterModel.cs" />
+    <Compile Include="ViewModel\BaseClasses\AuthenticationViewModel.cs" />
     <Compile Include="ViewModel\BaseClasses\ViewModelBase.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\RegisterViewModel.cs" />

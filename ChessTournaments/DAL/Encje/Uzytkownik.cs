@@ -25,6 +25,12 @@ namespace ChessTournaments.DAL.Encje
             TypKonta = typKonta;
         }
 
+        public Uzytkownik(string login, string haslo)
+        {
+            Login = login;
+            Haslo = haslo;
+        }
+
         public Uzytkownik(MySqlDataReader reader)
         {
             Login = reader["login"].ToString();

@@ -23,5 +23,10 @@ namespace ChessTournaments.View
         {
             InitializeComponent();
         }
+
+        private void PasswordTextBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            loginViewModel.Haslo = PasswordTextBox.Password;
+        }
     }
 }
