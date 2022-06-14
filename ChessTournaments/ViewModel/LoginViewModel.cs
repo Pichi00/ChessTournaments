@@ -32,12 +32,12 @@ namespace ChessTournaments.ViewModel
                 o =>
                 {
                     LoginScreen loginScreen = o as LoginScreen;
-
-                    bool czy_istnieje = _loginModel.WeryfikujUzytkownika(new Uzytkownik(Login, Haslo));
+                    Uzytkownik uzytkownik = new Uzytkownik(Login, Haslo);
+                    bool czy_istnieje = _loginModel.WeryfikujUzytkownika(uzytkownik);
                     if (czy_istnieje)
                     {
-                        MessageBox.Show($"Pomyślnie zalogowano jako {Login}");
-                        Uzytkownik.TypyKont typKonta = _loginModel.PobierzTypKonta(Login);
+                        MessageBox.Show($"Pomyślnie zalogowano jako {uzytkownik.Login}");
+                        Uzytkownik.TypyKont typKonta = _loginModel.PobierzTypKonta(uzytkownik.Login);
                         if(typKonta == Uzytkownik.TypyKont.ORGANIZATOR)
                         {
                             OrganizerDashboard organizerDashboard = new OrganizerDashboard();

@@ -105,13 +105,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DAL\DBConnection.cs" />
+    <Compile Include="DAL\Encje\Date.cs" />
+    <Compile Include="DAL\Encje\Organizator.cs" />
     <Compile Include="DAL\Encje\Uzytkownik.cs" />
+    <Compile Include="DAL\Encje\Zawodnik.cs" />
+    <Compile Include="DAL\Repozytoria\RepozytoriumOrganizator.cs" />
     <Compile Include="DAL\Repozytoria\RepozytoriumUzytkownicy.cs" />
+    <Compile Include="DAL\Repozytoria\RepozytoriumZawodnik.cs" />
     <Compile Include="Model\AuthenticationModel.cs" />
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Model\RegisterModel.cs" />
     <Compile Include="ViewModel\BaseClasses\AuthenticationViewModel.cs" />
     <Compile Include="ViewModel\BaseClasses\ViewModelBase.cs" />
+    <Compile Include="ViewModel\DashboardViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\RegisterViewModel.cs" />
     <Compile Include="ViewModel\BaseClasses\RelayCommand.cs" />
@@ -120,6 +126,12 @@
     </Compile>
     <Compile Include="View\PlayerDashboard.xaml.cs">
       <DependentUpon>PlayerDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RegisterFormOrganizer.xaml.cs">
+      <DependentUpon>RegisterFormOrganizer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RegisterFormPlayer.xaml.cs">
+      <DependentUpon>RegisterFormPlayer.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RegisterScreen.xaml.cs">
       <DependentUpon>RegisterScreen.xaml</DependentUpon>
@@ -143,6 +155,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PlayerDashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RegisterFormOrganizer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RegisterFormPlayer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

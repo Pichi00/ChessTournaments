@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 
 namespace ChessTournaments.DAL.Encje
 {
-    class Uzytkownik
+    public class Uzytkownik
     {
         public enum TypyKont {ORGANIZATOR, ZAWODNIK}
 

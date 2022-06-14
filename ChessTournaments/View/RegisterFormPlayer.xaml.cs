@@ -12,18 +12,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace ChessTournaments.View
 {
     /// <summary>
-    /// Logika interakcji dla klasy OrganizerDashboard.xaml
+    /// Logika interakcji dla klasy RegisterFormPlayer.xaml
     /// </summary>
-    using DAL.Encje;
-    public partial class OrganizerDashboard : Window
+    public partial class RegisterFormPlayer : UserControl
     {
-        public OrganizerDashboard()
+        public RegisterFormPlayer()
         {
             InitializeComponent();
+        }
+
+        private void RatingTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
