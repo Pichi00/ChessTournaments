@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         
         xmlns:vm="clr-namespace:ChessTournaments.ViewModel"
-        Title="Rejestracja" Height="300" Width="400"
+        Title="Rejestracja" Height="580" Width="600"
         x:Name="registerScreen">
     
     <Window.DataContext>
@@ -37,10 +37,24 @@
             <ComboBox Margin="5 0 0 0" 
                       Width="250"
                       HorizontalAlignment="Left"
+                      
                       SelectedValue="{Binding TypKontaString}">
                 <ComboBoxItem Content="ORGANIZATOR"/>
                 <ComboBoxItem Content="ZAWODNIK"/>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding ComboBoxSelectionChanged}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </ComboBox>
+
+            <local:RegisterFormOrganizer Visibility="{Binding OrganizerFormVisibility}">
+
+            </local:RegisterFormOrganizer>
+
+            <local:RegisterFormPlayer Visibility="{Binding PlayerFormVisibility}">
+
+            </local:RegisterFormPlayer>
 
             <Button Content="Zarejestruj się"
                     Width="100"
@@ -55,6 +69,7 @@
                 </i:Interaction.Triggers>
 
             </Button>
+            
 
             <TextBlock Text="Posiadasz już konto?"/>
 

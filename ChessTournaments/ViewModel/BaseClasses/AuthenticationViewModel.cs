@@ -9,6 +9,8 @@ namespace ChessTournaments.ViewModel.BaseClasses
     using DAL.Encje;
     class AuthenticationViewModel: ViewModelBase
     {
+
+        #region Własności Użytkownika
         private string login, haslo, typKontaString;
         private Uzytkownik.TypyKont typKonta;
         public string Login
@@ -61,5 +63,92 @@ namespace ChessTournaments.ViewModel.BaseClasses
             }
 
         }
+
+        #endregion
+
+        #region Własności organizatora
+        private string nazwaOrganizatora;
+
+        public string NazwaOrganizatora
+        {
+            get
+            {
+                return nazwaOrganizatora;
+            }
+            set
+            {
+                nazwaOrganizatora = value;
+                onPropertyChanged(nameof(nazwaOrganizatora));
+            }
+        }
+        #endregion
+
+        #region  Własności Zawodnika
+
+        private string  imieZawodnika, nazwiskoZawodnika, plecString;
+        private char plec;
+        private DateTime dataUrodzenia = DateTime.Now;
+        private int ranking;
+
+        public string ImieZawodnika
+        {
+            get => imieZawodnika;
+            set
+            {
+                imieZawodnika = value;
+                onPropertyChanged(nameof(imieZawodnika));
+            }
+        }
+        public string NazwiskoZawodnika
+        {
+            get => nazwiskoZawodnika;
+            set
+            {
+                nazwiskoZawodnika = value;
+                onPropertyChanged(nameof(nazwiskoZawodnika));
+            }
+        }
+        public DateTime DataUrodzenia
+        {
+            get => dataUrodzenia;
+            set
+            {
+                dataUrodzenia = value;
+                onPropertyChanged(nameof(dataUrodzenia));
+            }
+        }
+        public char Plec
+        {
+            get => plec;
+            set
+            {
+                plec = value;
+                onPropertyChanged(nameof(plec));
+            }
+        }
+
+        public string PlecString
+        {
+            get => plecString;
+            set
+            {
+                plecString = value;
+                onPropertyChanged(nameof(plecString));
+            }
+        }
+        public int Ranking
+        {
+            get => ranking;
+            set
+            {
+                ranking = value;
+                onPropertyChanged(nameof(ranking));
+            }
+        }
+        
+        #endregion
+
+
+
     }
 }

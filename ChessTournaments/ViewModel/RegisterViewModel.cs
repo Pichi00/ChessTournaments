@@ -16,16 +16,56 @@ namespace ChessTournaments.ViewModel
     class RegisterViewModel : AuthenticationViewModel
     {
 
-        private RegisterModel _registerModel = new RegisterModel();
-        
+        private RegisterModel registerModel = new RegisterModel();
+
+
+        private Visibility playerFormVisibility = Visibility.Collapsed;
+        public Visibility PlayerFormVisibility 
+        {
+            get 
+            {
+                return playerFormVisibility;
+            } 
+            set
+            {
+                playerFormVisibility = value;
+                onPropertyChanged(nameof(playerFormVisibility));
+            }
+        }
+
+        private Visibility organizerFormVisibility = Visibility.Collapsed;
+        public Visibility OrganizerFormVisibility
+        {
+            get
+            {
+                return organizerFormVisibility;
+            }
+            set
+            {
+                organizerFormVisibility = value;
+                onPropertyChanged(nameof(organizerFormVisibility));
+            }
+        }
+
 
         private void CzyscFormularz(RegisterScreen registerScreen)
         {
             Login = null;
             registerScreen.PasswordTextBox.Password = null;
             Haslo = null;
-            TypKontaString = null;
+
+            NazwaOrganizatora = null;
+
+            ImieZawodnika = null;
+            NazwiskoZawodnika = null;
+            DataUrodzenia = DateTime.Now;
+            PlecString = null;
+            Ranking = 0;
+            
         }
+
+
+
 
         private ICommand registerUser;
         public ICommand RegisterUser => registerUser ?? (registerUser =
@@ -34,7 +74,24 @@ namespace ChessTournaments.ViewModel
                 {
                     RegisterScreen registerScreen = o as RegisterScreen;
                     var uzytkownik = new Uzytkownik(Login, Haslo, TypKonta);
-                    _registerModel.DodajUzytkownikaDoBazy(uzytkownik);
+                    registerModel.DodajUzytkownikaDoBazy(uzytkownik);
+
+                    switch (uzytkownik.TypKonta)
+                    {
+                        case Uzytkownik.TypyKont.ORGANIZATOR:
+                            var organizator = new Organizator(NazwaOrganizatora, uzytkownik.Login);
+                            registerModel.DodajOrganizatoraDoBazy(organizator);
+                            break;
+                        case Uzytkownik.TypyKont.ZAWODNIK:
+                            if (PlecString.Contains("Mężczyzna"))
+                            {
+                                Plec = 'M';
+                            }
+                            var zawodnik = new Zawodnik(ImieZawodnika, NazwiskoZawodnika, new Date(DataUrodzenia), Plec, Ranking, uzytkownik.Login);
+                            registerModel.DodajZawodnikaDoBazy(zawodnik);
+                            break;
+                    }
+
                     MessageBox.Show("Pomyślnie dodano użytkownika do bazy");
                     CzyscFormularz(registerScreen);
 
@@ -54,5 +111,15 @@ namespace ChessTournaments.ViewModel
 
                 },
                 null));
+
+        private ICommand comboBoxSelectionChanged;
+        public ICommand ComboBoxSelectionChanged => comboBoxSelectionChanged ?? (comboBoxSelectionChanged =
+            new RelayCommand(
+                o =>
+                {
+                    registerModel.Przelacz(this,TypKontaString);
+                },
+                null
+                ));
     }
 }

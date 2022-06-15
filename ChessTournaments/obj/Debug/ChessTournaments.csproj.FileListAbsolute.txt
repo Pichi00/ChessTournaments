@@ -80,6 +80,10 @@ D:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\bin\Debug\Sys
 D:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\obj\Debug\View\TournamentList.g.cs
 D:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\obj\Debug\View\TournamentList.baml
+D:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\obj\Debug\View\RegisterFormOrganizer.g.cs
+D:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\obj\Debug\View\RegisterFormPlayer.g.cs
+D:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\obj\Debug\View\RegisterFormOrganizer.baml
+D:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\obj\Debug\View\RegisterFormPlayer.baml
 C:\Users\wobro\PycharmProjects\chess_database\ChessTournaments\ChessTournaments\bin\Debug\ChessTournaments.exe.config
 C:\Users\wobro\PycharmProjects\chess_database\ChessTournaments\ChessTournaments\bin\Debug\ChessTournaments.exe
 C:\Users\wobro\PycharmProjects\chess_database\ChessTournaments\ChessTournaments\bin\Debug\ChessTournaments.pdb

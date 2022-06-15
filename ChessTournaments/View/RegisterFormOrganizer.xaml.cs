@@ -16,12 +16,11 @@ using System.Windows.Shapes;
 namespace ChessTournaments.View
 {
     /// <summary>
-    /// Logika interakcji dla klasy OrganizerDashboard.xaml
+    /// Logika interakcji dla klasy RegisterFormOrganizer.xaml
     /// </summary>
-    using DAL.Encje;
-    public partial class OrganizerDashboard : Window
+    public partial class RegisterFormOrganizer : UserControl
     {
-        public OrganizerDashboard()
+        public RegisterFormOrganizer()
         {
             InitializeComponent();
         }
