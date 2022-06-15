@@ -4,7 +4,7 @@
 winexe
 C#
 .cs
-D:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\obj\Debug\
+C:\Users\wobro\PycharmProjects\chess_database\ChessTournaments\ChessTournaments\obj\Debug\
 ChessTournaments
 none
 false
@@ -15,6 +15,12 @@ D:\Studia\ProgramowanieObiektowe\ChessTournaments\ChessTournaments\App.xaml
 28-1862478780
 341652830201
 View\LoginScreen.xaml;View\OrganizerDashboard.xaml;View\PlayerDashboard.xaml;View\RegisterFormOrganizer.xaml;View\RegisterFormPlayer.xaml;View\RegisterScreen.xaml;View\TournamentList.xaml;
+C:\Users\wobro\PycharmProjects\chess_database\ChessTournaments\ChessTournaments\App.xaml
+51234259330
 
-False
+21748791080
+34360193048
+View\LoginScreen.xaml;View\OrganizerDashboard.xaml;View\PlayerDashboard.xaml;View\RegisterScreen.xaml;View\TournamentList.xaml;
+
+True
 
