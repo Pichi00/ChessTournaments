@@ -9,6 +9,7 @@ namespace ChessTournaments.DAL.Encje
 {
     class Turniej
     {
+
         #region wlasciwosci
         public int Id { get; set; }
         public String Nazwa { get; set; }

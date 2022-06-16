@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ChessTournaments.DAL.Encje
 {
-    class statusZawodnika
+    class StatusZawodnika
     {
         #region wlasciwosci
         public enum StatusEnum { niezaakceptowany, zakceptowany, odrzucony}
@@ -19,7 +19,7 @@ namespace ChessTournaments.DAL.Encje
         #endregion
 
         #region konstruktory
-        public statusZawodnika(int idzawodnika, int idturniej, StatusEnum status)
+        public StatusZawodnika(int idzawodnika, int idturniej, StatusEnum status)
         {
             IdZawodnik = idzawodnika;
             IdTurniej = idturniej;
@@ -27,30 +27,16 @@ namespace ChessTournaments.DAL.Encje
           
         }
 
-        public statusZawodnika(MySqlDataReader reader)
+        public StatusZawodnika(MySqlDataReader reader)
         {
             IdStatus = int.Parse(reader["idStatusu"].ToString());
             IdTurniej = int.Parse(reader["idTurniej"].ToString());
             IdZawodnik = int.Parse(reader["idZawodnik"].ToString());
-            if (reader["status"].ToString().ToLower()== "zakceptowany")
-            {
-                Status = StatusEnum.zakceptowany;
-            }
-            else
-            {
-                if (reader["status"].ToString().ToLower() == "odrzucony")
-                {
-                    Status = StatusEnum.odrzucony;
-                }
-                else
-                {
-                    Status = StatusEnum.niezaakceptowany;
-                }
-            }
+            Status=(StatusEnum)System.Enum.Parse(typeof(StatusEnum), reader["status"].ToString());
+        }
         
 
 
-        }
         #endregion
 
         //public string ToInsert()

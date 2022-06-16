@@ -4,51 +4,52 @@ using System.Linq;
 using System.Text;
 using MySql.Data.MySqlClient;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace ChessTournaments.DAL.Encje
 {
     class Partia
     {
         #region wlasciwosci
-        public int Id { get; set; }
-        public String Nazwa { get; set; }
-        public String Miasto { get; set; }
-        public DateTime Start { get; set; }
+        public int IdPartii { get; set; }
+        public int IdTurnieju { get; set; }
+        public int IdZawodnikBiale { get; set; }
+        public int IdZawodnikCzarne { get; set; }
 
-        public DateTime Koniec { get; set; }
-        public Double PulaNagrod { get; set; }
-        public String Organizator { get; set; }
-        public String Regulamin { get; set; }
+        public DateTime DataRozpoczecia { get; set; }
+
+        public int Runda { get; set; }
+        public String Rezultat { get; set; }
+
 
         #endregion
 
         #region konstruktory
-        public Turniej(string nazwa, string miasto, DateTime start, DateTime koniec, double nagrody, string regulamin)
+        public Partia(int idTurnieju, int idZawodnikBiale , int idZawodnikczarne, DateTime dataRozpoczecia ,int runda , string rezultat)
         {
-            Nazwa = nazwa;
-            Miasto = miasto;
-            Start = start;
-            Koniec = koniec;
-            PulaNagrod = nagrody;
-            Regulamin = regulamin;
-
-            //TODO: domyslnie dodawany organizator
+            IdTurnieju = idTurnieju;
+            IdZawodnikBiale = idZawodnikBiale;
+            IdZawodnikCzarne = idZawodnikczarne;
+            DataRozpoczecia = dataRozpoczecia;
+            Runda = runda;
+            Rezultat = rezultat;
         }
 
-        public Turniej(MySqlDataReader reader)
+        public Partia(MySqlDataReader reader)
         {
-            Nazwa = reader["nazwa"].ToString();
-            Miasto = reader["miasto"].ToString();
-            Start = DateTime.Parse(reader["dataRozpoczecia"].ToString());
-            Koniec = DateTime.Parse(reader["dataZakonczenia"].ToString());
-            PulaNagrod = double.Parse(reader["pulaNagrod "].ToString());
-            Regulamin = reader["regulamin"].ToString();
+            IdTurnieju = int.Parse(reader["idTurnieju"].ToString());
+            IdZawodnikBiale = int.Parse(reader["idZawodnikBiale"].ToString());
+            IdZawodnikCzarne = int.Parse(reader["idZawodnikCzarne"].ToString());
+            DataRozpoczecia = DateTime.Parse(reader["datarozpoczecia"].ToString());
+            Runda = int.Parse(reader["runda"].ToString());
+            Rezultat =  reader["status"].ToString();
+
         }
         #endregion
 
-        public string ToInsert()
-        {
-            return $"('{Nazwa}',  '{Miasto}','{Organizator}'  , '{Start}','{Koniec}' , '{PulaNagrod}' , '{Regulamin}' )";
-        }
+        //public string ToInsert()
+        //{
+        //    return $"('{Nazwa}',  '{Miasto}','{Organizator}'  , '{Start}','{Koniec}' , '{PulaNagrod}' , '{Regulamin}' )";
+        //}
     }
 }
