@@ -11,36 +11,37 @@ namespace ChessTournaments.DAL.Encje
     {
         #region wlasciwosci
         public int Id { get; set; }
-        public String Nazwa { get; set; }
-        public String Miasto { get; set; }
-        public DateTime Start { get; set; }
+        public string Nazwa { get; set; }
+        public string Miejsce { get; set; }
+        public string Start { get; set; }
 
-        public DateTime Koniec { get; set; }
-        public Double PulaNagrod { get; set; }
-        public String Organizator { get; set; }
-        public String Regulamin { get; set; }
+        public string Koniec { get; set; }
+        public double PulaNagrod { get; set; }
+        public int Organizator { get; set; }
+        public string Regulamin { get; set; }
 
         #endregion
 
         #region konstruktory
-        public Turniej(string nazwa, string miasto, DateTime start, DateTime koniec, double nagrody, string regulamin)
+        public Turniej(string nazwa, string miejsce, DateTime start, DateTime koniec, double nagrody, string regulamin, int organizator)
         {
             Nazwa = nazwa;
-            Miasto = miasto;
-            Start = start;
-            Koniec = koniec;
+            Miejsce = miejsce;
+            
+            Start = start.ToString("yyyy-MM-dd H:mm:ss");
+            Koniec = koniec.ToString("yyyy-MM-dd H:mm:ss");
             PulaNagrod = nagrody;
             Regulamin = regulamin;
+            Organizator = organizator;
 
-            //TODO: domyslnie dodawany organizator
         }
 
         public Turniej(MySqlDataReader reader)
         {
             Nazwa = reader["nazwa"].ToString();
-            Miasto = reader["miasto"].ToString();
-            Start = DateTime.Parse(reader["dataRozpoczecia"].ToString());
-            Koniec = DateTime.Parse(reader["dataZakonczenia"].ToString());
+            Miejsce = reader["miejce"].ToString();
+            Start = reader["dataRozpoczecia"].ToString();
+            Koniec = reader["dataZakonczenia"].ToString();
             PulaNagrod = double.Parse(reader["pulaNagrod "].ToString());
             Regulamin = reader["regulamin"].ToString();
         }
@@ -48,7 +49,7 @@ namespace ChessTournaments.DAL.Encje
 
         public string ToInsert()
         {
-            return $"('{Nazwa}',  '{Miasto}','{Organizator}'  , '{Start}','{Koniec}' , '{PulaNagrod}' , '{Regulamin}' )";
+            return $"('{Nazwa}', '{Miejsce}', '{Start}', '{Koniec}', '{PulaNagrod}', '{Regulamin}', '{Organizator}')";
         }
     }
 }

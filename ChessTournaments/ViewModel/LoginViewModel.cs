@@ -45,7 +45,7 @@ namespace ChessTournaments.ViewModel
                         }
                         else if (typKonta == Uzytkownik.TypyKont.ZAWODNIK)
                         {
-                            PlayerDashboard playerDashboard = new PlayerDashboard();
+                            PlayerDashboard playerDashboard = new PlayerDashboard(uzytkownik);
                             playerDashboard.Show();
                         }
                         loginScreen.Close();
