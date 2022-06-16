@@ -23,14 +23,14 @@
 
                     </Grid.ColumnDefinitions>
 
-                    <local:TournamentList Grid.Column="0" >
+                    <local:TournamentList Grid.Column="0" DataContext="{Binding TournamentListVM}" >
                         
                     </local:TournamentList>
 
                     <!--regulamin-->
-                    <Grid Background="#fff" Grid.Column="1" >
+                    <Grid Background="#fff" Grid.Column="1"  >
                         <TextBlock HorizontalAlignment="Center">Regulamin</TextBlock>
-                        <TextBlock TextWrapping="WrapWithOverflow" Padding="10" Text="{Binding regulamin }"></TextBlock>
+                        <TextBlock TextWrapping="WrapWithOverflow" Padding="10" Text="{Binding TournamentListVM.WybranyTurniej.Regulamin}"></TextBlock>
                         
                     </Grid>
                 </Grid>

@@ -20,11 +20,12 @@ namespace ChessTournaments.ViewModel
         {
             Start = DateTime.Now;
             Koniec = DateTime.Now;
+            TournamentListVM = new TournamentListViewModel();
         }
 
         private TurniejModel turniejModel = new TurniejModel();
-        public Uzytkownik ZalogowanyUzytkownik { get; set; }
 
+        public TournamentListViewModel TournamentListVM { get; set; }
         
 
         #region Własności
@@ -112,10 +113,10 @@ namespace ChessTournaments.ViewModel
 
         #region Metody
 
-        public void Zaloguj(Uzytkownik uzytkownik)
+        /*public void Zaloguj(Uzytkownik uzytkownik)
         {
             ZalogowanyUzytkownik = uzytkownik;
-        }
+        }*/
 
         public void CzyscFormularzDodawaniaTurnieju()
         {

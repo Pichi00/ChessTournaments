@@ -8,16 +8,14 @@
              mc:Ignorable="d" 
              xmlns:vm="clr-namespace:ChessTournaments.ViewModel"
              d:DesignHeight="450" d:DesignWidth="600">
-    <UserControl.DataContext>
+    <!-- <UserControl.DataContext>
         <vm:TournamentListViewModel x:Name="TournamentVM"/>
-    </UserControl.DataContext>
+    </UserControl.DataContext> -->
     <Grid>
         <ListView x:Name="viewTurnieje" 
-                              SelectedItem="{Binding TurniejeViewModel.BiezacyTurniej}" 
+                              SelectedItem="{Binding WybranyTurniej}" 
                               ItemsSource="{Binding Turnieje}"
-                              SelectedIndex="{Binding TurniejeViewModel.IndeksZaznaczonegoTurnieju, Mode=TwoWay}" 
-                              Grid.Column="0"  
-                  >
+                              Grid.Column="0" >
             
 
             <ListView.View >

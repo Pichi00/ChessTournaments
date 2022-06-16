@@ -32,6 +32,17 @@ namespace ChessTournaments.ViewModel
             }
         }
 
+        private Turniej wybranyTurniej;
+        public Turniej WybranyTurniej
+        {
+            get => wybranyTurniej;
+            set
+            {
+                wybranyTurniej = value;
+                onPropertyChanged(nameof(wybranyTurniej));
+            }
+        }
+
         public void OdswiezTurnieje() => Turnieje = model.PobierzWszystkieTurnieje();
         #endregion
 
