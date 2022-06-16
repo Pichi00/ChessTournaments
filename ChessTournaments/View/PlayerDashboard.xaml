@@ -62,7 +62,7 @@
                     <StackPanel Grid.Column="0">
 
                         <StackPanel Orientation="Horizontal" Margin="10">
-                            <TextBlock Text="{Binding biezacyTurniej}" ></TextBlock>
+                            <TextBlock Text="{Binding TournamentListVM.WybranyTurniej.Nazwa}" ></TextBlock>
                         </StackPanel>
 
                         <StackPanel HorizontalAlignment="Center" >
