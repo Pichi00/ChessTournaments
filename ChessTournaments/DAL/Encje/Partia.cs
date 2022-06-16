@@ -25,7 +25,7 @@ namespace ChessTournaments.DAL.Encje
         #endregion
 
         #region konstruktory
-        public Partia(int idTurnieju, int idZawodnikBiale , int idZawodnikczarne, DateTime dataRozpoczecia ,int runda , string rezultat)
+        public Partia(int idTurnieju, int idZawodnikBiale, int idZawodnikczarne, DateTime dataRozpoczecia, int runda, string rezultat)
         {
             IdTurnieju = idTurnieju;
             IdZawodnikBiale = idZawodnikBiale;
@@ -42,7 +42,7 @@ namespace ChessTournaments.DAL.Encje
             IdZawodnikCzarne = int.Parse(reader["idZawodnikCzarne"].ToString());
             DataRozpoczecia = DateTime.Parse(reader["datarozpoczecia"].ToString());
             Runda = int.Parse(reader["runda"].ToString());
-            Rezultat =  reader["status"].ToString();
+            Rezultat = reader["status"].ToString();
 
         }
         #endregion

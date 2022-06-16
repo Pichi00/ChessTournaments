@@ -10,9 +10,9 @@ namespace ChessTournaments.DAL.Repozytoria
 {
     class RepozytoriumStatus
     {
-        private const string DODAJ_STATUS= "INSERT INTO `statusZawodnika`(`idTurniej`,`idZawodnik`) VALUES "; //podczas doloczania do turnieju przez nowego zawodnika
+        private const string DODAJ_STATUS = "INSERT INTO `statusZawodnika`(`idTurniej`,`idZawodnik`) VALUES "; //podczas doloczania do turnieju przez nowego zawodnika
 
-        public static void wyslijZgloszenie(Zawodnik zawodnik,Turniej turniej)
+        public static void wyslijZgloszenie(Zawodnik zawodnik, Turniej turniej)
         {
             using (var connection = DBConnection.Instance.Connection)
             {
