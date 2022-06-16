@@ -9,6 +9,7 @@ namespace ChessTournaments.DAL.Encje
 {
     class Turniej
     {
+
         #region wlasciwosci
         public int Id { get; set; }
         public string Nazwa { get; set; }
@@ -38,6 +39,7 @@ namespace ChessTournaments.DAL.Encje
 
         public Turniej(MySqlDataReader reader)
         {
+            Id = int.Parse(reader["idTurnieju"].ToString());
             Nazwa = reader["nazwa"].ToString();
             Miejsce = reader["miejce"].ToString();
             Start = reader["dataRozpoczecia"].ToString();
