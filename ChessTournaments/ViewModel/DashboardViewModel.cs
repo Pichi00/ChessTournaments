@@ -108,6 +108,23 @@ namespace ChessTournaments.ViewModel
                 null
                 ));
 
+        private ICommand addStatus;
+        public ICommand AddStatus => addStatus ?? (addStatus =
+            new RelayCommand(
+                o =>
+                {
+                    PlayerDashboard playerDashboard = o as PlayerDashboard;
+                    string loginZawodnika= playerDashboard.DashboardVM.ZalogowanyUzytkownik.Login;
+                    int idZawodnika= turniejModel.PobierzIDZawodnika(loginZawodnika);
+                    int idTurniej = 0; //tutaj daj pobierz id turniej aktualnie selected w liscie
+
+                    StatusZawodnika status = new StatusZawodnika(StatusZawodnika.StatusEnum.niezaakceptowany,idZawodnika,idTurniej);
+                    RepozytoriumStatus.DodajStatusDoBazy(status);
+      
+                },
+                null
+                ));
+
         #endregion
 
         #region Metody

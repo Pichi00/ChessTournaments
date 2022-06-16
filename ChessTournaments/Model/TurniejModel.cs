@@ -10,18 +10,21 @@ namespace ChessTournaments.Model
     using DAL.Repozytoria;
     class TurniejModel
     {
-        public bool DodajTurniejDoBazy(Turniej turniej)
+ 
+        public void DodajStatusDoBazy(StatusZawodnika status)
         {
-            if (RepozytoriumTurniej.DodajTurniejDoBazy(turniej)){
-                return true;
-            }
-
-            return false;
+            RepozytoriumStatus.DodajStatusDoBazy(status);
+    
         }
 
         public int PobierzIDOrganizatora(string login)
         {
             return RepozytoriumOrganizator.PobierzIDOrganizatora(login);
+        }
+
+        public int PobierzIDZawodnika(string login)
+        {
+            return RepozytoriumZawodnik.PobierzIDZawodnika(login);
         }
     }
 }

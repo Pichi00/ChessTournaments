@@ -8,15 +8,17 @@ using System.Threading.Tasks;
 
 namespace ChessTournaments.DAL.Repozytoria
 {
+ 
+
     class RepozytoriumStatus
     {
-        private const string DODAJ_STATUS = "INSERT INTO `statusZawodnika`(`idTurniej`,`idZawodnik`) VALUES "; //podczas doloczania do turnieju przez nowego zawodnika
+        private const string DODAJ_STATUS = "INSERT INTO `statusZawodnika`(`idTurniej`,`idZawodnik`,`statusZawodnika`) VALUES "; //podczas doloczania do turnieju przez nowego zawodnika
 
-        public static void wyslijZgloszenie(Zawodnik zawodnik, Turniej turniej)
+        public static void DodajStatusDoBazy(StatusZawodnika status)
         {
             using (var connection = DBConnection.Instance.Connection)
-            {
-                MySqlCommand command = new MySqlCommand($"{DODAJ_STATUS} {$"('{zawodnik.Id} ,{turniej.Id}')"}", connection);
+            { 
+                MySqlCommand command = new MySqlCommand($"{DODAJ_STATUS} {status.ToInsert()}", connection);
                 connection.Open();
                 var id = command.ExecuteNonQuery();
                 connection.Close();
