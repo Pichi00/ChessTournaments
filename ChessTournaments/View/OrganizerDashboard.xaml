@@ -7,6 +7,7 @@
              xmlns:vm="clr-namespace:ChessTournaments.ViewModel"     
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
+             Name="organizerDashboard"
              d:DesignHeight="450" d:DesignWidth="900">
 
     <Window.DataContext>
@@ -50,27 +51,27 @@
                     </local:TournamentList>
 
                     <!--formularz-->
-
                     <StackPanel Background="#fff" Grid.Column="0">
                         <TextBlock Text="Nazwa:"/>
-                        <TextBox x:Name="nazwa"  Text="{Binding TurniejeViewModel.Nazwa}"/>
-                        <TextBlock Text="Miasto:"/>
-                        <TextBox x:Name="miasto" Text="{Binding TurniejeViewModel.Miasto}"/>
+                        <TextBox x:Name="nazwa"  Text="{Binding Nazwa}"/>
+                        <TextBlock Text="Miejsce:"/>
+                        <TextBox x:Name="miejsce" Text="{Binding Miejsce}"/>
 
                         <TextBlock Text="Start turnieju:"/>
-                        <TextBox x:Name="start" Text="{Binding TurniejeViewModel.Start}"/>
+                        <TextBox x:Name="start" Text="{Binding Start}"/>
 
-                        <TextBlock Text="Koniec Turnieju:"/>
-                        <TextBox x:Name="koniec" Text="{Binding TurniejeViewModel.Koniec}"/>
-                        <TextBlock Text="Póla nagród:"/>
-                        <TextBox x:Name="nagrody" Text="{Binding TurniejeViewModel.nagrody}"/>
+                        <TextBlock Text="Koniec turnieju:"/>
+                        <TextBox x:Name="koniec" Text="{Binding Koniec}"/>
+                        <TextBlock Text="Pula nagród:"/>
+                        <TextBox x:Name="nagrody" Text="{Binding Nagrody}" PreviewTextInput="nagrody_PreviewTextInput"/>
 
                         <TextBlock Text="Regulamin:"/>
-                        <TextBox x:Name="regulamin" TextWrapping="Wrap" Height="150" Text="{Binding TurniejeViewModel.regulamin}"/>
+                        <TextBox x:Name="regulamin" TextWrapping="Wrap" Height="150" Text="{Binding Regulamin}"/>
                         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                             <Button
                            Margin="10" 
-                           Command="{Binding AddTournament}">Dodaj turniej</Button>
+                           Command="{Binding AddTournament}"
+                           CommandParameter="{Binding ElementName=organizerDashboard}">Dodaj turniej</Button>
                             <Button
                            Margin="10" 
                            Command="{Binding EditTournament}">Edytuj turniej</Button>
@@ -80,6 +81,7 @@
                            Command="{Binding DelTournament}">Usun turniej</Button>
                         </StackPanel>
                     </StackPanel>
+
                 </Grid>
             </TabItem>
 

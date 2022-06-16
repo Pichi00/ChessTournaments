@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace ChessTournaments.View
 {
@@ -27,8 +28,13 @@ namespace ChessTournaments.View
             
             InitializeComponent();
             DashboardVM.Zaloguj(uzytkownik);
-            MessageBox.Show(DashboardVM.ZalogowanyUzytkownik.Login);
 
+        }
+
+        private void nagrody_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

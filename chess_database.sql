@@ -28,6 +28,7 @@ create table organizatorzy(
 create table turnieje(
      idTurnieju tinyint unsigned not null auto_increment,
      nazwa varchar(30) not null,
+     miejsce varchar(50) not null,
      organizator tinyint unsigned not null ,
      dataRozpoczecia datetime,
      dataZakonczenia datetime,

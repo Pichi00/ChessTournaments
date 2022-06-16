@@ -7,8 +7,12 @@
              xmlns:local="clr-namespace:ChessTournaments.View"
              xmlns:vm="clr-namespace:ChessTournaments.ViewModel"
              mc:Ignorable="d" 
+             Name="playerDashboard"
              d:DesignHeight="450" d:DesignWidth="900">
     
+    <Window.DataContext>
+        <vm:DashboardViewModel x:Name="DashboardVM"/>
+    </Window.DataContext>
     
     <Grid>
 

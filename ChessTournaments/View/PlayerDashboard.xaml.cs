@@ -15,14 +15,16 @@ using System.Windows.Shapes;
 
 namespace ChessTournaments.View
 {
+    using DAL.Encje;
     /// <summary>
     /// Logika interakcji dla klasy PlayerDashboard.xaml
     /// </summary>
     public partial class PlayerDashboard : Window
     {
-        public PlayerDashboard()
+        public PlayerDashboard(Uzytkownik uzytkownik)
         {
             InitializeComponent();
+            DashboardVM.Zaloguj(uzytkownik);
         }
     }
 }

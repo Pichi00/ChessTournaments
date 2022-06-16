@@ -13,6 +13,7 @@ namespace ChessTournaments.DAL.Repozytoria
         #region Zapytania
 
         private const string DODAJ_ORGANIZATORA = "INSERT INTO `organizatorzy`(`nazwa`, `login`) VALUES ";
+        private const string ZWROC_ID_ORGANIZATORA = "SELECT `idOrganizatora` FROM `organizatorzy` WHERE login like ";
         #endregion
 
         #region Metody
@@ -30,6 +31,28 @@ namespace ChessTournaments.DAL.Repozytoria
             }
 
             return stan;
+        }
+
+        public static int PobierzIDOrganizatora(string login)
+        {
+            int idOrg = 0;
+
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command = new MySqlCommand($"{ZWROC_ID_ORGANIZATORA} '{login}'", connection);
+                connection.Open();
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (int.TryParse(reader["idOrganizatora"].ToString(), out int result))
+                    {
+                        idOrg = result;
+                    };
+                }
+                connection.Close();
+            }
+
+            return idOrg;
         }
 
         #endregion

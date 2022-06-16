@@ -14,11 +14,13 @@ using System.Windows.Shapes;
 
 namespace ChessTournaments.View
 {
+    
     /// <summary>
     /// Logika interakcji dla klasy LoginScreen.xaml
     /// </summary>
     public partial class LoginScreen : Window
     {
+        
         public LoginScreen()
         {
             InitializeComponent();
