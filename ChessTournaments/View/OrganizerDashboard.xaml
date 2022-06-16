@@ -9,6 +9,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="900">
 
+    <Window.DataContext>
+        <vm:DashboardViewModel x:Name="DashboardVM"/>
+    </Window.DataContext>
     <Grid>
         <TabControl >
             <TabItem x:Name="turnieje" Header="Turnieje">
