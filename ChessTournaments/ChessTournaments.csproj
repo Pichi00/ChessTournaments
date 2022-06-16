@@ -142,6 +142,7 @@
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\RegisterViewModel.cs" />
     <Compile Include="ViewModel\BaseClasses\RelayCommand.cs" />
+    <Compile Include="ViewModel\TournamentListViewModel.cs" />
     <Compile Include="View\OrganizerDashboard.xaml.cs">
       <DependentUpon>OrganizerDashboard.xaml</DependentUpon>
     </Compile>

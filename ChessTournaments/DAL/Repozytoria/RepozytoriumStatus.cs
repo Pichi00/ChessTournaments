@@ -16,10 +16,10 @@ namespace ChessTournaments.DAL.Repozytoria
         {
             using (var connection = DBConnection.Instance.Connection)
             {
-                MySqlCommand command = new MySqlCommand($"{DODAJ_STATUS} {$"('{zawodnik.Id} ,{turniej.Id}')"}", connection);
+                /*MySqlCommand command = new MySqlCommand($"{DODAJ_STATUS} {$"('{zawodnik.Id} ,{turniej.Id}')"}", connection);
                 connection.Open();
                 var id = command.ExecuteNonQuery();
-                connection.Close();
+                connection.Close();*/
             }
         }
     };

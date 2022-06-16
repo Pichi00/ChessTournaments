@@ -13,6 +13,7 @@ namespace ChessTournaments.DAL.Repozytoria
         #region Zapytania
         private const string DODAJ_TURIEJ = "INSERT INTO `turnieje`" +
             "(`nazwa`,`miejsce`,`dataRozpoczecia`,`dataZakonczenia`,`pulaNagrod`,`regulamin`,`organizator`) VALUES ";
+        private const string WSZYSTKIE_TURNIEJE = "SELECT * FROM `turnieje`";
         #endregion
         #region Metody
 
@@ -30,6 +31,21 @@ namespace ChessTournaments.DAL.Repozytoria
             }
 
             return stan;
+        }
+
+        public static List<Turniej> PobierzWszystkieTurnieje()
+        {
+            List<Turniej> turnieje = new List<Turniej>();
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command = new MySqlCommand(WSZYSTKIE_TURNIEJE, connection);
+                connection.Open();
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                    turnieje.Add(new Turniej(reader));
+                connection.Close();
+            }
+            return turnieje;
         }
 
         #endregion

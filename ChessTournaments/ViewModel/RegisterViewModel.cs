@@ -89,7 +89,7 @@ namespace ChessTournaments.ViewModel
                             }
                             else
                             {
-                                Plec = 'K';
+                                Plec = 'F';
                             }
                             var zawodnik = new Zawodnik(ImieZawodnika, NazwiskoZawodnika, new Date(DataUrodzenia), Plec, Ranking, uzytkownik.Login);
                             registerModel.DodajZawodnikaDoBazy(zawodnik);

@@ -6,26 +6,24 @@
              xmlns:local="clr-namespace:ChessTournaments.View"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
+             xmlns:vm="clr-namespace:ChessTournaments.ViewModel"
              d:DesignHeight="450" d:DesignWidth="600">
+    <!-- <UserControl.DataContext>
+        <vm:TournamentListViewModel x:Name="TournamentVM"/>
+    </UserControl.DataContext> -->
     <Grid>
         <ListView x:Name="viewTurnieje" 
-                              SelectedItem="{Binding TurniejeViewModel.BiezacyTurniej}" 
-                              ItemsSource="{Binding TurniejeViewModel.Turnieje}"
-                              SelectedIndex="{Binding TurniejeViewModel.IndeksZaznaczonegoTurnieju, Mode=TwoWay}" 
-                              Grid.Column="0"  
-                  >
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding TurniejeViewModel.zaladujTurnieje}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
+                              SelectedItem="{Binding WybranyTurniej}" 
+                              ItemsSource="{Binding Turnieje}"
+                              Grid.Column="0" >
+            
 
-            <ListView.View  >
+            <ListView.View >
                 <GridView>
                     <GridViewColumn Width="100" x:Name="kolTurnieje">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding turniejeNazwa}" FontSize="14"/>
+                                <TextBlock Text="{Binding Nazwa}" FontSize="14"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                         <TextBlock Text="Nazwa"></TextBlock>
@@ -34,7 +32,7 @@
                     <GridViewColumn Width="100" x:Name="kolMiasto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding turniejeMiasto}" />
+                                <TextBlock Text="{Binding Miejsce}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                         <GridViewColumn.Header>
@@ -45,7 +43,7 @@
                     <GridViewColumn Width="100" x:Name="kolStart">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding dataRozpoczecia }" />
+                                <TextBlock Text="{Binding Start }" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                         <GridViewColumn.Header>
@@ -56,7 +54,7 @@
                     <GridViewColumn Width="100" x:Name="kolKoniec">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding dataZakonczenia }" />
+                                <TextBlock Text="{Binding Koniec }" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                         <GridViewColumn.Header>
@@ -68,7 +66,7 @@
                     <GridViewColumn Width="100" x:Name="kolPulaNagrod">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding pulaNagrod }" />
+                                <TextBlock Text="{Binding PulaNagrod }" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                         <GridViewColumn.Header>
@@ -79,7 +77,7 @@
                     <GridViewColumn Width="100" x:Name="kolOrganizator">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding organizator }" />
+                                <TextBlock Text="{Binding Organizator }" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                         <GridViewColumn.Header>

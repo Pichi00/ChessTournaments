@@ -20,11 +20,12 @@ namespace ChessTournaments.ViewModel
         {
             Start = DateTime.Now;
             Koniec = DateTime.Now;
+            TournamentListVM = new TournamentListViewModel();
         }
 
         private TurniejModel turniejModel = new TurniejModel();
-        public Uzytkownik ZalogowanyUzytkownik { get; set; }
 
+        public TournamentListViewModel TournamentListVM { get; set; }
         
 
         #region Własności
@@ -96,7 +97,7 @@ namespace ChessTournaments.ViewModel
                 o =>
                 {
                     OrganizerDashboard organizerDashboard = o as OrganizerDashboard;
-                    string loginOrganizatora = organizerDashboard.DashboardVM.ZalogowanyUzytkownik.Login;
+                    string loginOrganizatora = organizerDashboard.ZalogowanyUzytkownik.Login;
                     int idOrganizatora = turniejModel.PobierzIDOrganizatora(loginOrganizatora);
                     Turniej turniej = new Turniej(Nazwa, Miejsce, Start, Koniec, Nagrody, Regulamin, idOrganizatora);
                     if (turniejModel.DodajTurniejDoBazy(turniej))
@@ -112,10 +113,10 @@ namespace ChessTournaments.ViewModel
 
         #region Metody
 
-        public void Zaloguj(Uzytkownik uzytkownik)
+        /*public void Zaloguj(Uzytkownik uzytkownik)
         {
             ZalogowanyUzytkownik = uzytkownik;
-        }
+        }*/
 
         public void CzyscFormularzDodawaniaTurnieju()
         {
