@@ -12,13 +12,11 @@ namespace ChessTournaments.Model
 
     class TurniejModel
     {
-        public bool DodajTurniejDoBazy(Turniej turniej)
+ 
+        public void DodajStatusDoBazy(StatusZawodnika status)
         {
-            if (RepozytoriumTurniej.DodajTurniejDoBazy(turniej)){
-                return true;
-            }
-
-            return false;
+            RepozytoriumStatus.DodajStatusDoBazy(status);
+    
         }
 
         public int PobierzIDOrganizatora(string login)
@@ -34,6 +32,9 @@ namespace ChessTournaments.Model
                 turnieje.Add(turniej);
             
             return turnieje;
+        public int PobierzIDZawodnika(string login)
+        {
+            return RepozytoriumZawodnik.PobierzIDZawodnika(login);
         }
     }
 }

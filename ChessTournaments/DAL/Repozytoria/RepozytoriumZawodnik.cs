@@ -14,6 +14,7 @@ namespace ChessTournaments.DAL.Repozytoria
         #region Zapytania
         private const string INFO_O_ZAWODNIKU = "SELECT * FROM zawodnicy WHERE login LIKE ";
         private const string DODAJ_ZAWODNIKA = "INSERT INTO `zawodnicy`(`imie`, `nazwisko`, `dataUrodzenia`, `plec`, `ranking`, `login`) VALUES ";
+        private const string ZWROC_ID_ZAWODNIKA = "SELECT `idZawodnia` FROM `zawodnicy` WHERE login like ";
         #endregion
 
         #region Metody
@@ -33,6 +34,29 @@ namespace ChessTournaments.DAL.Repozytoria
 
             return stan;
         }
+
+        public static int PobierzIDZawodnika(string login)
+        {
+            int idZaw = 0;
+
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command = new MySqlCommand($"{ZWROC_ID_ZAWODNIKA} '{login}'", connection);
+                connection.Open();
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (int.TryParse(reader["idZawodnika"].ToString(), out int result))
+                    {
+                        idZaw = result;
+                    };
+                }
+                connection.Close();
+            }
+
+            return idZaw;
+        }
+
 
         #endregion
     }

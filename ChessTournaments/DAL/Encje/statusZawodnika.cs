@@ -10,7 +10,7 @@ namespace ChessTournaments.DAL.Encje
     class StatusZawodnika
     {
         #region wlasciwosci
-        public enum StatusEnum { niezaakceptowany, zakceptowany, odrzucony }
+        public enum StatusEnum { niezaakceptowany, zaakceptowany, odrzucony }
         public int IdStatus { get; set; }
         public int IdZawodnik { get; set; }
         public int IdTurniej { get; set; }
@@ -19,10 +19,11 @@ namespace ChessTournaments.DAL.Encje
         #endregion
 
         #region konstruktory
-        public StatusZawodnika(StatusEnum status)
+        public StatusZawodnika(StatusEnum status,int idZawodnk, int idTurniej)
         {
             Status = status;
-
+            IdTurniej = idTurniej;
+            IdZawodnik = idZawodnk;
         }
 
         public StatusZawodnika(MySqlDataReader reader)
@@ -39,7 +40,7 @@ namespace ChessTournaments.DAL.Encje
 
         public string ToInsert()
         {
-            return $"('{Status}')";
+            return $"('{IdZawodnik},{IdTurniej},{Status.ToString()}')";
         }
     }
 }
