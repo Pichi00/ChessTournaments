@@ -9,12 +9,12 @@
              mc:Ignorable="d" 
              Name="playerDashboard"
              d:DesignHeight="450" d:DesignWidth="900">
-    
-    <Window.DataContext>
-        <vm:DashboardViewModel x:Name="DashboardVM"/>
-    </Window.DataContext>
-    
-    <Grid>
+
+    <Window.Resources>
+        <vm:DashboardViewModel x:Key="DashboardVM"/>
+    </Window.Resources>
+
+    <Grid DataContext="{StaticResource DashboardVM}">
 
         <TabControl >
             <TabItem x:Name="turnieje" Header="Turnieje">
@@ -24,14 +24,19 @@
                         <ColumnDefinition Width="5*"/>
                     </Grid.ColumnDefinitions>
 
-                    <local:TournamentList Grid.Column="0" Grid.ColumnSpan="2">
+                    <local:TournamentList Grid.Column="0" 
+                                          Grid.ColumnSpan="2"
+                                          DataContext="{Binding TournamentListVM}">
 
                     </local:TournamentList>
 
                     <!--regulamin-->
                     <Grid Background="#fff" Grid.Column="1" >
                         <TextBlock HorizontalAlignment="Center" >Regulamin</TextBlock>
-                        <TextBlock TextWrapping="WrapWithOverflow" Padding="10" Text="{Binding regulamin }"></TextBlock>
+                        <TextBlock TextWrapping="WrapWithOverflow" Padding="10" 
+                                   Text="{Binding TournamentListVM.WybranyTurniej.Regulamin}">
+                            
+                        </TextBlock>
                         <Button
                            Margin="10" 
                            VerticalAlignment="Bottom"

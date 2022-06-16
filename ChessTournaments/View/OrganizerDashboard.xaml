@@ -30,7 +30,9 @@
                     <!--regulamin-->
                     <Grid Background="#fff" Grid.Column="1"  >
                         <TextBlock HorizontalAlignment="Center">Regulamin</TextBlock>
-                        <TextBlock TextWrapping="WrapWithOverflow" Padding="10" Text="{Binding TournamentListVM.WybranyTurniej.Regulamin}"></TextBlock>
+                        <TextBlock TextWrapping="WrapWithOverflow" Padding="10" 
+                                   Text="{Binding TournamentListVM.WybranyTurniej.Regulamin}">
+                        </TextBlock>
                         
                     </Grid>
                 </Grid>
