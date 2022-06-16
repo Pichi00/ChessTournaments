@@ -41,17 +41,23 @@ namespace ChessTournaments.DAL.Encje
         {
             Id = int.Parse(reader["idTurnieju"].ToString());
             Nazwa = reader["nazwa"].ToString();
-            Miejsce = reader["miejce"].ToString();
+            Miejsce = reader["miejsce"].ToString();
             Start = reader["dataRozpoczecia"].ToString();
             Koniec = reader["dataZakonczenia"].ToString();
-            PulaNagrod = double.Parse(reader["pulaNagrod "].ToString());
+            PulaNagrod = double.Parse(reader["pulaNagrod"].ToString());
             Regulamin = reader["regulamin"].ToString();
+            Organizator = int.Parse(reader["organizator"].ToString());
         }
         #endregion
 
         public string ToInsert()
         {
             return $"('{Nazwa}', '{Miejsce}', '{Start}', '{Koniec}', '{PulaNagrod}', '{Regulamin}', '{Organizator}')";
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
         }
     }
 }

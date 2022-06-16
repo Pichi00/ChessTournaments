@@ -21,10 +21,11 @@ namespace ChessTournaments.View
     /// </summary>
     public partial class PlayerDashboard : Window
     {
+        public Uzytkownik ZalogowanyUzytkownik { get; set; }
         public PlayerDashboard(Uzytkownik uzytkownik)
         {
             InitializeComponent();
-            DashboardVM.Zaloguj(uzytkownik);
+            ZalogowanyUzytkownik = uzytkownik;
         }
     }
 }

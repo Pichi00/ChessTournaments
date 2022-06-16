@@ -10,10 +10,10 @@
              Name="organizerDashboard"
              d:DesignHeight="450" d:DesignWidth="900">
 
-    <Window.DataContext>
-        <vm:DashboardViewModel x:Name="DashboardVM"/>
-    </Window.DataContext>
-    <Grid>
+    <Window.Resources>
+        <vm:DashboardViewModel x:Key="DashboardVM"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource DashboardVM}">
         <TabControl >
             <TabItem x:Name="turnieje" Header="Turnieje">
                 <Grid >

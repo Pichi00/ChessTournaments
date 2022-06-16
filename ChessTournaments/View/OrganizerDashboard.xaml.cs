@@ -22,12 +22,12 @@ namespace ChessTournaments.View
     using DAL.Encje;
     public partial class OrganizerDashboard : Window
     {
-        
+        public Uzytkownik ZalogowanyUzytkownik { get; set; }
         public OrganizerDashboard(Uzytkownik uzytkownik)
         {
             
             InitializeComponent();
-            DashboardVM.Zaloguj(uzytkownik);
+            ZalogowanyUzytkownik = uzytkownik;
 
         }
 

@@ -96,7 +96,7 @@ namespace ChessTournaments.ViewModel
                 o =>
                 {
                     OrganizerDashboard organizerDashboard = o as OrganizerDashboard;
-                    string loginOrganizatora = organizerDashboard.DashboardVM.ZalogowanyUzytkownik.Login;
+                    string loginOrganizatora = organizerDashboard.ZalogowanyUzytkownik.Login;
                     int idOrganizatora = turniejModel.PobierzIDOrganizatora(loginOrganizatora);
                     Turniej turniej = new Turniej(Nazwa, Miejsce, Start, Koniec, Nagrody, Regulamin, idOrganizatora);
                     if (turniejModel.DodajTurniejDoBazy(turniej))
