@@ -122,6 +122,8 @@
     <Compile Include="DAL\DBConnection.cs" />
     <Compile Include="DAL\Encje\Date.cs" />
     <Compile Include="DAL\Encje\Organizator.cs" />
+    <Compile Include="DAL\Encje\Partia.cs" />
+    <Compile Include="DAL\Encje\statusZawodnika.cs" />
     <Compile Include="DAL\Encje\Turniej.cs" />
     <Compile Include="DAL\Encje\Uzytkownik.cs" />
     <Compile Include="DAL\Encje\Zawodnik.cs" />

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Threading.Tasks;
 
 namespace ChessTournaments.DAL.Encje
 {
-    class Turniej
+    class Partia
     {
         #region wlasciwosci
         public int Id { get; set; }
@@ -37,7 +37,6 @@ namespace ChessTournaments.DAL.Encje
 
         public Turniej(MySqlDataReader reader)
         {
-            Id = int.Parse(reader["idTurnieju"].ToString());
             Nazwa = reader["nazwa"].ToString();
             Miasto = reader["miasto"].ToString();
             Start = DateTime.Parse(reader["dataRozpoczecia"].ToString());
