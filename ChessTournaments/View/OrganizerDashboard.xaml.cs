@@ -21,9 +21,14 @@ namespace ChessTournaments.View
     using DAL.Encje;
     public partial class OrganizerDashboard : Window
     {
-        public OrganizerDashboard()
+        
+        public OrganizerDashboard(Uzytkownik uzytkownik)
         {
+            
             InitializeComponent();
+            DashboardVM.Zaloguj(uzytkownik);
+            MessageBox.Show(DashboardVM.ZalogowanyUzytkownik.Login);
+
         }
     }
 }

@@ -40,7 +40,7 @@ namespace ChessTournaments.ViewModel
                         Uzytkownik.TypyKont typKonta = _loginModel.PobierzTypKonta(uzytkownik.Login);
                         if(typKonta == Uzytkownik.TypyKont.ORGANIZATOR)
                         {
-                            OrganizerDashboard organizerDashboard = new OrganizerDashboard();
+                            OrganizerDashboard organizerDashboard = new OrganizerDashboard(uzytkownik);
                             organizerDashboard.Show();
                         }
                         else if (typKonta == Uzytkownik.TypyKont.ZAWODNIK)
