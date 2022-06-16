@@ -77,7 +77,7 @@
                     <GridViewColumn Width="100" x:Name="kolOrganizator">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Organizator }" />
+                                <TextBlock Text="{Binding NazwaOrganizatora }" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                         <GridViewColumn.Header>

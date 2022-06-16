@@ -7,6 +7,7 @@ using MySql.Data.MySqlClient;
 
 namespace ChessTournaments.DAL.Encje
 {
+    using Repozytoria;
     class Turniej
     {
 
@@ -21,6 +22,8 @@ namespace ChessTournaments.DAL.Encje
         public int Organizator { get; set; }
         public string Regulamin { get; set; }
 
+        public string NazwaOrganizatora { get; set; }
+
         #endregion
 
         #region konstruktory
@@ -34,6 +37,7 @@ namespace ChessTournaments.DAL.Encje
             PulaNagrod = nagrody;
             Regulamin = regulamin;
             Organizator = organizator;
+            NazwaOrganizatora = RepozytoriumOrganizator.PobierzNazweOrganizatoraPoID(organizator);
 
         }
 
@@ -47,6 +51,7 @@ namespace ChessTournaments.DAL.Encje
             PulaNagrod = double.Parse(reader["pulaNagrod"].ToString());
             Regulamin = reader["regulamin"].ToString();
             Organizator = int.Parse(reader["organizator"].ToString());
+            NazwaOrganizatora = RepozytoriumOrganizator.PobierzNazweOrganizatoraPoID(Organizator);
         }
         #endregion
 
@@ -55,9 +60,9 @@ namespace ChessTournaments.DAL.Encje
             return $"('{Nazwa}', '{Miejsce}', '{Start}', '{Koniec}', '{PulaNagrod}', '{Regulamin}', '{Organizator}')";
         }
 
-        public override string ToString()
+        /*public override string ToString()
         {
             return base.ToString();
-        }
+        }*/
     }
 }
