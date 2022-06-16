@@ -12,6 +12,7 @@ namespace ChessTournaments.DAL.Encje
         public enum TypyKont {ORGANIZATOR, ZAWODNIK}
 
         #region Własności
+        public int IdUzytkownik;
         public string Login { get; set; }
         public string Haslo { get; set; }
         public TypyKont TypKonta { get; set; }

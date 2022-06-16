@@ -19,10 +19,8 @@ namespace ChessTournaments.DAL.Encje
         #endregion
 
         #region konstruktory
-        public StatusZawodnika(int idzawodnika, int idturniej, StatusEnum status)
+        public StatusZawodnika(StatusEnum status)
         {
-            IdZawodnik = idzawodnika;
-            IdTurniej = idturniej;
             Status = status;
           
         }
@@ -34,14 +32,14 @@ namespace ChessTournaments.DAL.Encje
             IdZawodnik = int.Parse(reader["idZawodnik"].ToString());
             Status=(StatusEnum)System.Enum.Parse(typeof(StatusEnum), reader["status"].ToString());
         }
-        
+
 
 
         #endregion
 
-        //public string ToInsert()
-        //{
-        //    return $"('{Nazwa}',  '{Miasto}','{Organizator}'  , '{Start}','{Koniec}' , '{PulaNagrod}' , '{Regulamin}' )";
-        //}
+        public string ToInsert()
+        {
+            return $"('{Status}')";
+        }
     }
 }

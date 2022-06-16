@@ -128,6 +128,7 @@
     <Compile Include="DAL\Encje\Uzytkownik.cs" />
     <Compile Include="DAL\Encje\Zawodnik.cs" />
     <Compile Include="DAL\Repozytoria\RepozytoriumOrganizator.cs" />
+    <Compile Include="DAL\Repozytoria\RepozytoriumStatus.cs" />
     <Compile Include="DAL\Repozytoria\RepozytoriumUzytkownicy.cs" />
     <Compile Include="DAL\Repozytoria\RepozytoriumZawodnik.cs" />
     <Compile Include="Model\AuthenticationModel.cs" />
