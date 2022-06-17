@@ -10,6 +10,7 @@ namespace ChessTournaments.ViewModel
     using BaseClasses;
     using Model;
     using DAL.Encje;
+    using System.Windows.Input;
 
     class TournamentListViewModel:ViewModelBase
     {
@@ -44,6 +45,9 @@ namespace ChessTournaments.ViewModel
         }
 
         public void OdswiezTurnieje() => Turnieje = model.PobierzWszystkieTurnieje();
+
+        
+
         #endregion
 
     }

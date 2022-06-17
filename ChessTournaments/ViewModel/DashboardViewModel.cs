@@ -104,6 +104,7 @@ namespace ChessTournaments.ViewModel
                     {
                         MessageBox.Show("Dodano turniej do bazy");
                         CzyscFormularzDodawaniaTurnieju();
+                        TournamentListVM.OdswiezTurnieje();
                     }
                 },
                 null
@@ -115,13 +116,23 @@ namespace ChessTournaments.ViewModel
                 o =>
                 {
                     PlayerDashboard playerDashboard = o as PlayerDashboard;
-                    string loginZawodnika= playerDashboard.DashboardVM.ZalogowanyUzytkownik.Login;
+                    string loginZawodnika= playerDashboard.ZalogowanyUzytkownik.Login;
                     int idZawodnika= turniejModel.PobierzIDZawodnika(loginZawodnika);
                     int idTurniej = 0; //tutaj daj pobierz id turniej aktualnie selected w liscie
 
                     StatusZawodnika status = new StatusZawodnika(StatusZawodnika.StatusEnum.niezaakceptowany,idZawodnika,idTurniej);
                     RepozytoriumStatus.DodajStatusDoBazy(status);
       
+                },
+                null
+                ));
+
+        private ICommand zaktualizujTurnieje;
+        public ICommand ZaktualizujTurnieje => zaktualizujTurnieje ?? (zaktualizujTurnieje =
+            new RelayCommand(
+                o =>
+                {
+                    TournamentListVM.OdswiezTurnieje();
                 },
                 null
                 ));

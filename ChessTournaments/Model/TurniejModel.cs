@@ -19,6 +19,15 @@ namespace ChessTournaments.Model
     
         }
 
+        public bool DodajTurniejDoBazy(Turniej turniej)
+        {
+            if (RepozytoriumTurniej.DodajTurniejDoBazy(turniej))
+            {
+                return true;
+            }
+            return false;
+        }
+
         public int PobierzIDOrganizatora(string login)
         {
             return RepozytoriumOrganizator.PobierzIDOrganizatora(login);
@@ -30,8 +39,10 @@ namespace ChessTournaments.Model
             var pobraneTurnieje = RepozytoriumTurniej.PobierzWszystkieTurnieje();
             foreach (var turniej in pobraneTurnieje)
                 turnieje.Add(turniej);
-            
+
             return turnieje;
+        }
+
         public int PobierzIDZawodnika(string login)
         {
             return RepozytoriumZawodnik.PobierzIDZawodnika(login);
