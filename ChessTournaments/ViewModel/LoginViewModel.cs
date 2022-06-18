@@ -18,6 +18,8 @@ namespace ChessTournaments.ViewModel
     {
         private LoginModel _loginModel = new LoginModel();
 
+        public Uzytkownik ZalogowanyUzytkownik { get; set; }
+
         private void CzyscFormularz(LoginScreen loginScreen)
         {
             Login = null;
@@ -40,12 +42,14 @@ namespace ChessTournaments.ViewModel
                         Uzytkownik.TypyKont typKonta = _loginModel.PobierzTypKonta(uzytkownik.Login);
                         if(typKonta == Uzytkownik.TypyKont.ORGANIZATOR)
                         {
-                            OrganizerDashboard organizerDashboard = new OrganizerDashboard(uzytkownik);
+                            ZalogowanyUzytkownik = uzytkownik;
+                            OrganizerDashboard organizerDashboard = new OrganizerDashboard(uzytkownik);                            
                             organizerDashboard.Show();
                         }
                         else if (typKonta == Uzytkownik.TypyKont.ZAWODNIK)
                         {
-                            PlayerDashboard playerDashboard = new PlayerDashboard(uzytkownik);
+                            ZalogowanyUzytkownik = uzytkownik;
+                            PlayerDashboard playerDashboard = new PlayerDashboard(uzytkownik);                            
                             playerDashboard.Show();
                         }
                         loginScreen.Close();

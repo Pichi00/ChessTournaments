@@ -14,7 +14,7 @@ namespace ChessTournaments.ViewModel
 
     class TournamentListViewModel:ViewModelBase
     {
-        TurniejModel model = null;
+        protected TurniejModel model = null;
         public TournamentListViewModel()
         {
             

@@ -9,6 +9,7 @@ namespace ChessTournaments.Model
     using DAL.Encje;
     using DAL.Repozytoria;
     using System.Collections.ObjectModel;
+    using System.Windows;
 
     class TurniejModel
     {
@@ -43,9 +44,21 @@ namespace ChessTournaments.Model
             return turnieje;
         }
 
+        public ObservableCollection<Turniej> PobierzTurniejeOrganizatora(Organizator organizator)
+        {
+            ObservableCollection<Turniej> turnieje = new ObservableCollection<Turniej>();
+            var pobraneTurnieje = RepozytoriumTurniej.PobierzTurniejeOrganizatora(organizator);
+            foreach (var turniej in pobraneTurnieje)
+                turnieje.Add(turniej);
+
+            return turnieje;
+        }
+
         public int PobierzIDZawodnika(string login)
         {
             return RepozytoriumZawodnik.PobierzIDZawodnika(login);
         }
+
+        
     }
 }
