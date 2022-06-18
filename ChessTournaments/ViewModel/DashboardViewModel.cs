@@ -21,7 +21,7 @@ namespace ChessTournaments.ViewModel
             Start = DateTime.Now;
             Koniec = DateTime.Now;
             TournamentListVM = new TournamentListViewModel();
-            OrganizersTournamentsVM = new OrganizersTournaments();
+            OrganizersTournamentsVM = new OrganizersTournaments(this);
         }
 
         private TurniejModel turniejModel = new TurniejModel();
@@ -111,6 +111,21 @@ namespace ChessTournaments.ViewModel
                 },
                 null
                 ));
+        private ICommand deleteTournament;
+        public ICommand DeleteTournament => deleteTournament ?? (deleteTournament =
+            new RelayCommand(
+                o =>
+                {
+                    Turniej turniej = OrganizersTournamentsVM.WybranyTurniej;
+                    if (turniejModel.UsunTurniejZBazy(turniej))
+                    {
+                        MessageBox.Show("Usunięto turniej do bazy");
+                    }
+
+
+                },
+                null
+                ));
 
         private ICommand addStatus;
         public ICommand AddStatus => addStatus ?? (addStatus =
@@ -151,16 +166,37 @@ namespace ChessTournaments.ViewModel
                 null
                 ));
 
+       
+
+
 
 
         #endregion
 
-        #region Metody
+        private ICommand raiseTournamentListSelectionChangedEvent;
+        public ICommand RaiseTournamentListSelectionChangedEvent => raiseTournamentListSelectionChangedEvent ?? (raiseTournamentListSelectionChangedEvent =
+            new RelayCommand(
+                o =>
+                {
+                    RaiseTournamentListSelectionChanged();
+                },
+                null
+                ));
 
-        /*public void Zaloguj(Uzytkownik uzytkownik)
+        public void RaiseTournamentListSelectionChanged()
         {
-            ZalogowanyUzytkownik = uzytkownik;
-        }*/
+            if (TournamentListSelectionChanged != null)
+            {
+                TournamentListSelectionChanged(EventArgs.Empty);
+            }
+        }
+
+
+        public delegate void TournamentListSelectionChangedHandler(EventArgs args);
+
+        public event TournamentListSelectionChangedHandler TournamentListSelectionChanged;
+
+        #region Metody
 
         public void CzyscFormularzDodawaniaTurnieju()
         {
@@ -171,6 +207,17 @@ namespace ChessTournaments.ViewModel
             Nagrody = 0;
             Regulamin = null;
         }
+
+        public void WypelnijFormularzZObiektu(Turniej turniej)
+        {
+            Nazwa = turniej.Nazwa;
+            Miejsce = turniej.Miejsce;
+            Start = DateTime.Parse(turniej.Start);
+            Koniec = DateTime.Parse(turniej.Koniec);
+            Nagrody = turniej.PulaNagrod;
+            Regulamin = turniej.Regulamin;
+        }
+
         #endregion
     }
 }

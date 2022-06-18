@@ -15,6 +15,7 @@ namespace ChessTournaments.DAL.Repozytoria
             "(`nazwa`,`miejsce`,`dataRozpoczecia`,`dataZakonczenia`,`pulaNagrod`,`regulamin`,`organizator`) VALUES ";
         private const string WSZYSTKIE_TURNIEJE = "SELECT * FROM `turnieje`";
         private const string TURNIEJE_ORGANIZATORA = "SELECT * FROM `turnieje` WHERE `organizator` = ";
+        private const string USUN_TURNIEJ = "DELETE FROM `turnieje` WHERE `idTurnieju` = ";
         #endregion
         #region Metody
 
@@ -31,6 +32,20 @@ namespace ChessTournaments.DAL.Repozytoria
                 connection.Close();
             }
 
+            return stan;
+        }
+
+        public static bool UsunTurniejZBazy(Turniej turniej)
+        {
+            bool stan = false;
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command = new MySqlCommand($"{USUN_TURNIEJ} {turniej.Id}", connection);
+                connection.Open();
+                var id = command.ExecuteNonQuery();
+                stan = true;
+                connection.Close();
+            }
             return stan;
         }
 
@@ -64,6 +79,8 @@ namespace ChessTournaments.DAL.Repozytoria
             }
             return turnieje;
         }
+
+        
         #endregion
     }
 }

@@ -14,14 +14,19 @@ namespace ChessTournaments.ViewModel
 
     class TournamentListViewModel:ViewModelBase
     {
-        protected TurniejModel model = null;
+        #region Konstruktory
         public TournamentListViewModel()
         {
             
             model = new TurniejModel();
             OdswiezTurnieje();
         }
+        #endregion
+
         #region Właściwości
+
+        protected TurniejModel model = null;
+
         private ObservableCollection<Turniej> turnieje;
         public ObservableCollection<Turniej> Turnieje 
         {
@@ -43,12 +48,17 @@ namespace ChessTournaments.ViewModel
                 onPropertyChanged(nameof(wybranyTurniej));
             }
         }
+        #endregion
 
-        public void OdswiezTurnieje() => Turnieje = model.PobierzWszystkieTurnieje();
+        
+        
+
+        public void OdswiezTurnieje() => Turnieje = model.Turnieje;
+       
 
         
 
-        #endregion
+
 
     }
 }
