@@ -14,6 +14,7 @@ namespace ChessTournaments.DAL.Repozytoria
         private const string DODAJ_TURIEJ = "INSERT INTO `turnieje`" +
             "(`nazwa`,`miejsce`,`dataRozpoczecia`,`dataZakonczenia`,`pulaNagrod`,`regulamin`,`organizator`) VALUES ";
         private const string WSZYSTKIE_TURNIEJE = "SELECT * FROM `turnieje`";
+        private const string TURNIEJE_ORGANIZATORA = "SELECT * FROM `turnieje` WHERE `organizator` = ";
         #endregion
         #region Metody
 
@@ -48,6 +49,21 @@ namespace ChessTournaments.DAL.Repozytoria
             return turnieje;
         }
 
+        
+        public static List<Turniej> PobierzTurniejeOrganizatora(Organizator organizator)
+        {
+            List<Turniej> turnieje = new List<Turniej>();
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command = new MySqlCommand($"{TURNIEJE_ORGANIZATORA} {organizator.Id}", connection);
+                connection.Open();
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                    turnieje.Add(new Turniej(reader));
+                connection.Close();
+            }
+            return turnieje;
+        }
         #endregion
     }
 }

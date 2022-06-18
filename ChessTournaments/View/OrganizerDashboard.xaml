@@ -14,8 +14,16 @@
         <vm:DashboardViewModel x:Key="DashboardVM"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource DashboardVM}">
-        <TabControl >
-            <TabItem x:Name="turnieje" Header="Turnieje">
+        <TabControl>
+
+            <!-- <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding ZaktualizujTurniejeOrganizatora}"
+                                               CommandParameter="{Binding ElementName=organizerDashboard}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers> -->
+
+            <TabItem x:Name="turnieje" Header="Turnieje" >
                 <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
@@ -23,7 +31,7 @@
 
                     </Grid.ColumnDefinitions>
 
-                    <local:TournamentList Grid.Column="0" DataContext="{Binding TournamentListVM}" >
+                    <local:TournamentList Grid.Column="0" DataContext="{Binding TournamentListVM}">
                         
                     </local:TournamentList>
 
@@ -41,15 +49,15 @@
 
 
             </TabItem>
-            <TabItem x:Name="addTurnament" Header="Dodaj Turniej" >
+            <TabItem x:Name="addTurnament" Header="Dodaj Turniej">
                 <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5*"/>
                         <ColumnDefinition Width="10*"/>
                     </Grid.ColumnDefinitions>
 
-                    <local:TournamentList Grid.Column="1">
-
+                    <local:TournamentList Grid.Column="1" DataContext="{Binding OrganizersTournamentsVM}">
+                        
                     </local:TournamentList>
 
                     <!--formularz-->

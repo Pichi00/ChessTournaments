@@ -21,11 +21,13 @@ namespace ChessTournaments.ViewModel
             Start = DateTime.Now;
             Koniec = DateTime.Now;
             TournamentListVM = new TournamentListViewModel();
+            OrganizersTournamentsVM = new OrganizersTournaments();
         }
 
         private TurniejModel turniejModel = new TurniejModel();
 
         public TournamentListViewModel TournamentListVM { get; set; }
+        public OrganizersTournaments OrganizersTournamentsVM { get; set; }
         
 
         #region Własności
@@ -136,6 +138,20 @@ namespace ChessTournaments.ViewModel
                 },
                 null
                 ));
+
+        private ICommand zaktualizujTurniejeOrganizatora;
+        public ICommand ZaktualizujTurniejeOrganizatora => zaktualizujTurniejeOrganizatora ?? (zaktualizujTurniejeOrganizatora =
+            new RelayCommand(
+                o =>
+                {
+                    OrganizerDashboard organizerDashboard = o as OrganizerDashboard;
+                    Organizator organizator = new Organizator(organizerDashboard.ZalogowanyUzytkownik.Login);
+                    OrganizersTournamentsVM.OdswiezTurnieje(organizator);
+                },
+                null
+                ));
+
+
 
         #endregion
 
