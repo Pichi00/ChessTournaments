@@ -99,7 +99,8 @@
                            CommandParameter="{Binding ElementName=organizerDashboard}">Dodaj turniej</Button>
                             <Button
                            Margin="10" 
-                           Command="{Binding EditTournament}">Edytuj turniej</Button>
+                           Command="{Binding EditTournament}"
+                           CommandParameter="{Binding ElementName=organizerDashboard}">Edytuj turniej</Button>
 
                             <Button
                            Margin="10"

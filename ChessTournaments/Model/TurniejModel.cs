@@ -50,6 +50,15 @@ namespace ChessTournaments.Model
             return false;
         }
 
+        public bool EdytujTurniejWBazie(Turniej turniej)
+        {
+            if (RepozytoriumTurniej.EdytujTurniejWBazie(turniej))
+            {
+                return true;
+            }
+            return false;
+        }
+
         public int PobierzIDOrganizatora(string login)
         {
             return RepozytoriumOrganizator.PobierzIDOrganizatora(login);
