@@ -11,6 +11,7 @@ namespace ChessTournaments.ViewModel
     using Model;
     using DAL.Encje;
     using System.Windows.Input;
+    using System.ComponentModel;
 
     class TournamentListViewModel:ViewModelBase
     {
@@ -27,6 +28,8 @@ namespace ChessTournaments.ViewModel
 
         protected TurniejModel model = null;
 
+        //public event PropertyChangedEventHandler WybranyTurniejPropertyChangedEvent;
+
         private ObservableCollection<Turniej> turnieje;
         public ObservableCollection<Turniej> Turnieje 
         {
@@ -38,7 +41,7 @@ namespace ChessTournaments.ViewModel
             }
         }
 
-        private Turniej wybranyTurniej;
+        protected Turniej wybranyTurniej;
         public Turniej WybranyTurniej
         {
             get => wybranyTurniej;
@@ -50,12 +53,10 @@ namespace ChessTournaments.ViewModel
         }
         #endregion
 
-        
-        
-
         public void OdswiezTurnieje() => Turnieje = model.PobierzWszystkieTurnieje();
        
-
+        
+        
         
 
 

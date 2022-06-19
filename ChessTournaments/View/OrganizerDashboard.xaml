@@ -13,6 +13,7 @@
     <Window.Resources>
         <vm:DashboardViewModel x:Key="DashboardVM"/>
     </Window.Resources>
+    
     <Grid DataContext="{StaticResource DashboardVM}">
         <TabControl>
 
@@ -65,12 +66,12 @@
                                           Grid.Column="1" 
                                           DataContext="{Binding OrganizersTournamentsVM}"
                                           >
-                        <!-- Do poprawy -->
+                        <!-- Do poprawy 
                         <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Selector.SelectionChanged">
+                            <i:EventTrigger EventName="WybranyTurniejPropertyChangedEvent">
                                 <i:InvokeCommandAction Command="{Binding ZaladujInformacjeOTurnieju}"/>
                             </i:EventTrigger>
-                        </i:Interaction.Triggers>
+                        </i:Interaction.Triggers> -->
 
                     </local:TournamentList>
 
