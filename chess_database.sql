@@ -63,7 +63,7 @@ create table statusZawodnika(
 	idStatusu tinyint unsigned not null auto_increment,
 	idZawodnik tinyint unsigned not null,
 	idTurniej tinyint unsigned not null,
-	statusZawodnika enum("niezaakceptowany","zaakceptowany","odrzucony") default("niezaakceptowany"),
+	statusZawodnika enum("niezaakceptowany","zaakceptowany","odrzucony") default "niezaakceptowany" ,
 	primary key(idStatusu),
 	foreign key(idZawodnik) references zawodnicy(idZawodnika),
 	foreign key(idTurniej) references turnieje(idTurnieju)
@@ -77,7 +77,7 @@ create table partie(
      idSedziego tinyint unsigned not null,
      datarozpoczecia datetime,
      runda tinyint unsigned,
-     rezultat enum("0-0","1-0","0-1","1/2-1/2") not null default("0-0"),
+     rezultat enum("0-0","1-0","0-1","1/2-1/2") not null default "0-0",
      primary key(idPartii),
      foreign key(idTurnieju) references turnieje(idTurnieju),
      foreign key(idZawodnikBiale) references zawodnicy(idZawodnika),
