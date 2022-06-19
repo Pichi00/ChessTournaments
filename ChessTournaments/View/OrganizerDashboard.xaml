@@ -13,6 +13,7 @@
     <Window.Resources>
         <vm:DashboardViewModel x:Key="DashboardVM"/>
     </Window.Resources>
+    
     <Grid DataContext="{StaticResource DashboardVM}">
         <TabControl>
 
@@ -65,12 +66,12 @@
                                           Grid.Column="1" 
                                           DataContext="{Binding OrganizersTournamentsVM}"
                                           >
-                        <!-- Do poprawy -->
+                        <!-- Do poprawy 
                         <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Selector.SelectionChanged">
+                            <i:EventTrigger EventName="WybranyTurniejPropertyChangedEvent">
                                 <i:InvokeCommandAction Command="{Binding ZaladujInformacjeOTurnieju}"/>
                             </i:EventTrigger>
-                        </i:Interaction.Triggers>
+                        </i:Interaction.Triggers> -->
 
                     </local:TournamentList>
 
@@ -98,13 +99,19 @@
                            CommandParameter="{Binding ElementName=organizerDashboard}">Dodaj turniej</Button>
                             <Button
                            Margin="10" 
-                           Command="{Binding EditTournament}">Edytuj turniej</Button>
+                           Command="{Binding EditTournament}"
+                           CommandParameter="{Binding ElementName=organizerDashboard}">Edytuj turniej</Button>
 
                             <Button
                            Margin="10"
                            Command="{Binding DeleteTournament}"
                            CommandParameter="{Binding ElementName=organizerDashboard}">
                                 Usun turniej</Button>
+
+                            <Button
+                           Margin="10"
+                           Command="{Binding ClearForm}">
+                                Wyczysc pola</Button>
                         </StackPanel>
                     </StackPanel>
 

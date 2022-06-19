@@ -59,6 +59,18 @@ namespace ChessTournaments.ViewModel
             
         }
 
-        
+        public new Turniej WybranyTurniej
+        {
+            get => wybranyTurniej;
+            set
+            {
+                wybranyTurniej = value;
+                onPropertyChanged(nameof(wybranyTurniej));
+                ZaladujInformacjeOTurnieju.Execute(this);
+
+            }
+        }
+
+
     }
 }

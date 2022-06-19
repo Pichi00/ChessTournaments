@@ -16,6 +16,7 @@ namespace ChessTournaments.DAL.Repozytoria
         private const string WSZYSTKIE_TURNIEJE = "SELECT * FROM `turnieje`";
         private const string TURNIEJE_ORGANIZATORA = "SELECT * FROM `turnieje` WHERE `organizator` = ";
         private const string USUN_TURNIEJ = "DELETE FROM `turnieje` WHERE `idTurnieju` = ";
+        private const string EDYTUJ_TURNIEJ = "UPDATE `turnieje` SET ";
         #endregion
         #region Metody
 
@@ -41,6 +42,30 @@ namespace ChessTournaments.DAL.Repozytoria
             using (var connection = DBConnection.Instance.Connection)
             {
                 MySqlCommand command = new MySqlCommand($"{USUN_TURNIEJ} {turniej.Id}", connection);
+                connection.Open();
+                var id = command.ExecuteNonQuery();
+                stan = true;
+                connection.Close();
+            }
+            return stan;
+        }
+
+        public static bool EdytujTurniejWBazie(Turniej turniej)
+        {
+            bool stan = false;
+
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command = new MySqlCommand($"" +
+                    $"{EDYTUJ_TURNIEJ} " +
+                    $"`nazwa` = '{turniej.Nazwa}', " +
+                    $"`miejsce` = '{turniej.Miejsce}', " +
+                    $"`dataRozpoczecia` = '{turniej.Start}', " +
+                    $"`dataZakonczenia` = '{turniej.Koniec}', " +
+                    $"`pulaNagrod` = '{turniej.PulaNagrod}', " +
+                    $"`regulamin` = '{turniej.Regulamin}' " +
+                    $"WHERE `idTurnieju` = {turniej.Id}",
+                    connection);
                 connection.Open();
                 var id = command.ExecuteNonQuery();
                 stan = true;

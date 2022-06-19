@@ -60,6 +60,17 @@ namespace ChessTournaments.DAL.Encje
             return $"('{Nazwa}', '{Miejsce}', '{Start}', '{Koniec}', '{PulaNagrod}', '{Regulamin}', '{Organizator}')";
         }
 
+        public void Aktualizuj(string nazwa, string miejsce, DateTime start, DateTime koniec, double nagrody, string regulamin) 
+        {
+            Nazwa = nazwa;
+            Miejsce = miejsce;
+
+            Start = start.ToString("yyyy-MM-dd H:mm:ss");
+            Koniec = koniec.ToString("yyyy-MM-dd H:mm:ss");
+            PulaNagrod = nagrody;
+            Regulamin = regulamin;
+        }
+
         /*public override string ToString()
         {
             return base.ToString();

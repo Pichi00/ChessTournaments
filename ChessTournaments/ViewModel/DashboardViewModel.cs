@@ -129,6 +129,29 @@ namespace ChessTournaments.ViewModel
                 null
                 ));
 
+        private ICommand editTournament;
+        public ICommand EditTournament => editTournament ?? (editTournament =
+            new RelayCommand(
+                o =>
+                {
+                    string loginOrganizatora = OrganizersTournamentsVM.ZalogowanyOrganizator.Login;
+                    int idOrganizatora = turniejModel.PobierzIDOrganizatora(loginOrganizatora);
+
+                    Turniej turniej = OrganizersTournamentsVM.WybranyTurniej;
+                    turniej.Aktualizuj(Nazwa,Miejsce,Start,Koniec,Nagrody,Regulamin);
+
+                    if (turniejModel.EdytujTurniejWBazie(turniej))
+                    {
+                        MessageBox.Show("Zaktualizowano informacje o turnieju");
+                        TournamentListVM.OdswiezTurnieje();
+                        OrganizersTournamentsVM.OdswiezTurnieje(OrganizersTournamentsVM.ZalogowanyOrganizator);
+                    }
+
+
+                },
+                null
+                ));
+
         private ICommand addStatus;
         public ICommand AddStatus => addStatus ?? (addStatus =
             new RelayCommand(
@@ -167,36 +190,44 @@ namespace ChessTournaments.ViewModel
                 },
                 null
                 ));
+        private ICommand clearForm;
+        public ICommand ClearForm => clearForm ?? (clearForm =
+            new RelayCommand(
+                o =>
+                {
+                    CzyscFormularzDodawaniaTurnieju();
+                },
+                null
+                ));
 
-       
 
 
 
 
         #endregion
 
-        private ICommand raiseTournamentListSelectionChangedEvent;
-        public ICommand RaiseTournamentListSelectionChangedEvent => raiseTournamentListSelectionChangedEvent ?? (raiseTournamentListSelectionChangedEvent =
-            new RelayCommand(
-                o =>
-                {
-                    RaiseTournamentListSelectionChanged();
-                },
-                null
-                ));
+        /* private ICommand raiseTournamentListSelectionChangedEvent;
+         public ICommand RaiseTournamentListSelectionChangedEvent => raiseTournamentListSelectionChangedEvent ?? (raiseTournamentListSelectionChangedEvent =
+             new RelayCommand(
+                 o =>
+                 {
+                     RaiseTournamentListSelectionChanged();
+                 },
+                 null
+                 ));
 
-        public void RaiseTournamentListSelectionChanged()
-        {
-            if (TournamentListSelectionChanged != null)
-            {
-                TournamentListSelectionChanged(EventArgs.Empty);
-            }
-        }
+         public void RaiseTournamentListSelectionChanged()
+         {
+             if (TournamentListSelectionChanged != null)
+             {
+                 TournamentListSelectionChanged(EventArgs.Empty);
+             }
+         }
 
 
-        public delegate void TournamentListSelectionChangedHandler(EventArgs args);
+         public delegate void TournamentListSelectionChangedHandler(EventArgs args);
 
-        public event TournamentListSelectionChangedHandler TournamentListSelectionChanged;
+         public event TournamentListSelectionChangedHandler TournamentListSelectionChanged;*/
 
         #region Metody
 
