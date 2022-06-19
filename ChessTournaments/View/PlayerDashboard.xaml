@@ -29,7 +29,7 @@
 
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Selector.SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding ZaladujInform  acjeOTurnieju}"/>
+                                <i:InvokeCommandAction Command="{Binding ZaladujInformacjeOTurnieju}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers> 
 

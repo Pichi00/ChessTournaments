@@ -59,6 +59,8 @@ create table zawodnicy(
 	foreign key(login) references uzytkownicy(login)
 );
 
+
+
 create table statusZawodnika(
 	idStatusu tinyint unsigned not null auto_increment,
 	idZawodnik tinyint unsigned not null,
