@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace ChessTournaments.DAL.Encje
 {
+    using Repozytoria;
     public class Zawodnik
     {
         #region Własności
+        public int Id { get; set; }
         public string Imie { get; set; }
         public string Nazwisko { get; set; }
         public Date DataUrodzenia { get; set; }
@@ -29,6 +31,13 @@ namespace ChessTournaments.DAL.Encje
             Login = login;
         }
 
+        public Zawodnik(string login)
+        {
+           Login = login;
+           Id = RepozytoriumZawodnik.PobierzIDZawodnika(login);
+
+        }
+
         #endregion
 
         #region Metody
@@ -37,6 +46,8 @@ namespace ChessTournaments.DAL.Encje
         {
             return $"('{Imie}', '{Nazwisko}', '{DataUrodzenia}', '{Plec}', '{Ranking}', '{Login}')";
         }
+
+        
 
         #endregion
     }

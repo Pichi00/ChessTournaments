@@ -61,12 +61,12 @@
                     </Grid.ColumnDefinitions>
 
                     <local:TournamentList Grid.Column="1" x:Name="StatusTournamentList"
-                                          DataContext="{Binding StatusPlayerList}"
+                                          DataContext="{Binding UserTournamentsVM}"
                                            >
                         <!-- Do poprawy -->
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Selector.SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding ZaladujInformacjeOTurnieju}"/>
+                                <i:InvokeCommandAction Command="{Binding PobierzWszystkieTurniejeuzytkownika}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers> 
                     </local:TournamentList>
@@ -74,7 +74,7 @@
                     <StackPanel Grid.Column="0">
 
                         <StackPanel Orientation="Horizontal" Margin="10">
-                            <TextBlock Text="{Binding TournamentListVM.WybranyTurniej.Nazwa}" ></TextBlock>
+                            <TextBlock Text="{Binding User}" ></TextBlock>
                         </StackPanel>
 
                         <StackPanel HorizontalAlignment="Center" >

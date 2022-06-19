@@ -22,13 +22,15 @@ namespace ChessTournaments.ViewModel
             Koniec = DateTime.Now;
             TournamentListVM = new TournamentListViewModel();
             OrganizersTournamentsVM = new OrganizersTournaments(this);
+            UserTournamentsVM = new UserTournaments(this);
         }
 
         private TurniejModel turniejModel = new TurniejModel();
 
         public TournamentListViewModel TournamentListVM { get; set; }
         public OrganizersTournaments OrganizersTournamentsVM { get; set; }
-        
+        public UserTournaments UserTournamentsVM { get; set; }
+
 
         #region Własności
 
@@ -163,10 +165,9 @@ namespace ChessTournaments.ViewModel
                     int idZawodnika = turniejModel.PobierzIDZawodnika(loginZawodnika);
                     int idTurniej = TournamentListVM.WybranyTurniej.Id;
 
-                    MessageBox.Show(idTurniej.ToString());
                     StatusZawodnika status = new StatusZawodnika(StatusZawodnika.StatusEnum.niezaakceptowany, idZawodnika, idTurniej);
                     RepozytoriumStatus.DodajStatusDoBazy(status);
-                   
+                   //todo brak mozliwosci wysylania dwoch zgloszen do jednego turnieju
 
                 },
                 null
