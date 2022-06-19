@@ -22,12 +22,14 @@ namespace ChessTournaments.ViewModel
             Koniec = DateTime.Now;
             TournamentListVM = new TournamentListViewModel();
             OrganizersTournamentsVM = new OrganizersTournaments(this);
+            PlayerListVM = new PlayerListVewModel();
         }
 
         private TurniejModel turniejModel = new TurniejModel();
 
         public TournamentListViewModel TournamentListVM { get; set; }
         public OrganizersTournaments OrganizersTournamentsVM { get; set; }
+        public PlayerListVewModel PlayerListVM { get; set; }
         
 
         #region Własności

@@ -130,77 +130,11 @@
                         <ColumnDefinition Width="596*"/>
                     </Grid.ColumnDefinitions>
 
-                    <ListView x:Name="viewTurnieje" Grid.Column="2"
-                              SelectedItem="{Binding TurniejeViewModel.BiezacyZawodnicy}" 
-                              ItemsSource="{Binding TurniejeViewModel.Zawodnicy}"
-                              SelectedIndex="{Binding TurniejeViewModel.IndeksZaznaczonegoZawodnika, Mode=TwoWay}" 
-                    >
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding TurniejeViewModel.zaladujZawodnikow}"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-
-                        <ListView.View >
-                            <GridView>
-                                <GridViewColumn Width="100" x:Name="kolImie">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding turniejeImie}" FontSize="14"/>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                    <TextBlock Text="Imię"></TextBlock>
-                                </GridViewColumn>
-
-                                <GridViewColumn Width="100" x:Name="kolNazwiso">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding turniejeNazwisko}" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                    <GridViewColumn.Header>
-                                        <TextBlock Text="Nazwisko"></TextBlock>
-                                    </GridViewColumn.Header>
-                                </GridViewColumn>
-
-                                <GridViewColumn Width="100" x:Name="kolDataUrodzenia">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding dataUrozdzenia}" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                    <GridViewColumn.Header>
-                                        <TextBlock Text="Data urodzenia"></TextBlock>
-                                    </GridViewColumn.Header>
-                                </GridViewColumn>
-
-
-                                <GridViewColumn Width="100" x:Name="kolRanking">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding ranking }" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                    <GridViewColumn.Header>
-                                        <TextBlock Text="Ranking"></TextBlock>
-                                    </GridViewColumn.Header>
-                                </GridViewColumn>
-
-                                <GridViewColumn Width="100" x:Name="kolPłec">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding plec }" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                    <GridViewColumn.Header>
-                                        <TextBlock Text="Płeć"></TextBlock>
-                                    </GridViewColumn.Header>
-                                </GridViewColumn>
-
-
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
+                    <local:PlayerList Grid.Column="2"
+                                      DataContext="{Binding PlayerListVM}">
+                        
+                    </local:PlayerList>
+                    
                     <StackPanel Grid.Column="0" Grid.ColumnSpan="2">
 
                         <StackPanel Orientation="Horizontal" Margin="10">
