@@ -7,7 +7,9 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              xmlns:vm="clr-namespace:ChessTournaments.ViewModel"
-             d:DesignHeight="450" d:DesignWidth="600">
+             d:DesignHeight="450" d:DesignWidth="600"
+             
+             >
     <!-- <UserControl.DataContext>
         <vm:TournamentListViewModel x:Name="TournamentVM"/>
     </UserControl.DataContext> -->
@@ -16,6 +18,7 @@
                               SelectedItem="{Binding WybranyTurniej}" 
                               ItemsSource="{Binding Turnieje}"
                               Grid.Column="0" >
+
             
 
             <ListView.View >

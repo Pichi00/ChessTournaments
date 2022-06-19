@@ -33,6 +33,7 @@
 
                     <local:TournamentList Grid.Column="0" DataContext="{Binding TournamentListVM}">
                         
+                        
                     </local:TournamentList>
 
                     <!--regulamin-->
@@ -50,14 +51,27 @@
 
             </TabItem>
             <TabItem x:Name="addTurnament" Header="Dodaj Turniej">
+                
+                
                 <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5*"/>
                         <ColumnDefinition Width="10*"/>
                     </Grid.ColumnDefinitions>
 
-                    <local:TournamentList Grid.Column="1" DataContext="{Binding OrganizersTournamentsVM}">
-                        
+                    
+
+                    <local:TournamentList x:Name="OrganizersTournamentList"
+                                          Grid.Column="1" 
+                                          DataContext="{Binding OrganizersTournamentsVM}"
+                                          >
+                        <!-- Do poprawy -->
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Selector.SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding ZaladujInformacjeOTurnieju}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
                     </local:TournamentList>
 
                     <!--formularz-->
@@ -88,7 +102,9 @@
 
                             <Button
                            Margin="10"
-                           Command="{Binding DelTournament}">Usun turniej</Button>
+                           Command="{Binding DeleteTournament}"
+                           CommandParameter="{Binding ElementName=organizerDashboard}">
+                                Usun turniej</Button>
                         </StackPanel>
                     </StackPanel>
 

@@ -13,7 +13,17 @@ namespace ChessTournaments.Model
 
     class TurniejModel
     {
- 
+        public ObservableCollection<Turniej> Turnieje { get; set; }
+
+        public TurniejModel()
+        {
+            Turnieje = new ObservableCollection<Turniej>();
+            List<Turniej> pobraneTurnieje = RepozytoriumTurniej.PobierzWszystkieTurnieje();
+            foreach(var turniej in pobraneTurnieje)
+            {
+                Turnieje.Add(turniej);
+            }
+        }
         public void DodajStatusDoBazy(StatusZawodnika status)
         {
             RepozytoriumStatus.DodajStatusDoBazy(status);
@@ -24,6 +34,17 @@ namespace ChessTournaments.Model
         {
             if (RepozytoriumTurniej.DodajTurniejDoBazy(turniej))
             {
+                Turnieje.Add(turniej);
+                return true;
+            }
+            return false;
+        }
+
+        public bool UsunTurniejZBazy(Turniej turniej)
+        {
+            if (RepozytoriumTurniej.UsunTurniejZBazy(turniej))
+            {
+                Turnieje.Remove(turniej);
                 return true;
             }
             return false;
