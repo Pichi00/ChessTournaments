@@ -12,18 +12,17 @@ namespace ChessTournaments.DAL.Repozytoria
 
     class RepozytoriumStatus
     {
-        private const string DODAJ_STATUS = "INSERT INTO `statusZawodnika`(`idTurniej`,`idZawodnik`,`statusZawodnika`) VALUES "; //podczas doloczania do turnieju przez nowego zawodnika
-
+        private const string DODAJ_STATUS = "INSERT INTO `statuszawodnika`(`idZawodnik`,`idTurniej`,`statusZawodnika`) VALUES "; //podczas doloczania do turnieju przez nowego zawodnika
+        private const string WYSWIETL_TURNIEJE_UZYTKOWNIKA= "select nazwa, miasto";
+        private const string WYSWIETL_ZGLOSZENIA_DO_TURNIEJU = "INSERT INTO `statusZawodnika`(`idTurniej`,`idZawodnik`,`statusZawodnika`) VALUES ";
         public static void DodajStatusDoBazy(StatusZawodnika status)
         {
             using (var connection = DBConnection.Instance.Connection)
             {
-                /*MySqlCommand command = new MySqlCommand($"{DODAJ_STATUS} {$"('{zawodnik.Id} ,{turniej.Id}')"}", connection);
-            { 
                 MySqlCommand command = new MySqlCommand($"{DODAJ_STATUS} {status.ToInsert()}", connection);
                 connection.Open();
                 var id = command.ExecuteNonQuery();
-                connection.Close();*/
+                connection.Close();
             }
         }
     };

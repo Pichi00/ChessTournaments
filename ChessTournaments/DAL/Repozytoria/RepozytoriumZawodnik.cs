@@ -14,7 +14,7 @@ namespace ChessTournaments.DAL.Repozytoria
         #region Zapytania
         private const string INFO_O_ZAWODNIKU = "SELECT * FROM zawodnicy WHERE login LIKE ";
         private const string DODAJ_ZAWODNIKA = "INSERT INTO `zawodnicy`(`imie`, `nazwisko`, `dataUrodzenia`, `plec`, `ranking`, `login`) VALUES ";
-        private const string ZWROC_ID_ZAWODNIKA = "SELECT `idZawodnia` FROM `zawodnicy` WHERE login like ";
+        private const string ZWROC_ID_ZAWODNIKA = "SELECT `idZawodnika` FROM `zawodnicy` WHERE login like ";
         #endregion
 
         #region Metody

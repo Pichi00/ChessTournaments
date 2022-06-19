@@ -40,7 +40,8 @@ namespace ChessTournaments.DAL.Encje
 
         public string ToInsert()
         {
-            return $"('{IdZawodnik},{IdTurniej},{Status.ToString()}')";
+            return $"({IdZawodnik},{IdTurniej},'{Status.ToString()}')";
         }
     }
+    
 }

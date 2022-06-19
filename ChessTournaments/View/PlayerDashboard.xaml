@@ -25,8 +25,13 @@
                     </Grid.ColumnDefinitions>
 
                     <local:TournamentList Grid.Column="0" 
-                                          Grid.ColumnSpan="2"
                                           DataContext="{Binding TournamentListVM}">
+
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Selector.SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding ZaladujInform  acjeOTurnieju}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers> 
 
                     </local:TournamentList>
 
@@ -35,12 +40,12 @@
                         <TextBlock HorizontalAlignment="Center" >Regulamin</TextBlock>
                         <TextBlock TextWrapping="WrapWithOverflow" Padding="10" 
                                    Text="{Binding TournamentListVM.WybranyTurniej.Regulamin}">
-                            
+
                         </TextBlock>
                         <Button
                            Margin="10" 
                            VerticalAlignment="Bottom"
-                           Command="{Binding AddStatus}">Wyślij zgłoszenie</Button>
+                           Command="{Binding AddStatus }" CommandParameter="{Binding ElementName=playerDashboard}">Wyślij zgłoszenie</Button>
                     </Grid>
                 </Grid>
 
@@ -48,15 +53,22 @@
 
 
             </TabItem>
-            <TabItem x:Name="mojeTurnieje" Header="Moje Turnieje" HorizontalAlignment="Left" Margin="0,-2,0,0">
+            <TabItem x:Name="mojeTurnieje" Header="Moje Turnieje" HorizontalAlignment="Left">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5*"/>
                         <ColumnDefinition Width="10*"/>
                     </Grid.ColumnDefinitions>
 
-                    <local:TournamentList Grid.Column="1">
-
+                    <local:TournamentList Grid.Column="1" x:Name="StatusTournamentList"
+                                          DataContext="{Binding StatusPlayerList}"
+                                           >
+                        <!-- Do poprawy -->
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Selector.SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding ZaladujInformacjeOTurnieju}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers> 
                     </local:TournamentList>
 
                     <StackPanel Grid.Column="0">
