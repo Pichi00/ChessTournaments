@@ -190,36 +190,44 @@ namespace ChessTournaments.ViewModel
                 },
                 null
                 ));
+        private ICommand clearForm;
+        public ICommand ClearForm => clearForm ?? (clearForm =
+            new RelayCommand(
+                o =>
+                {
+                    CzyscFormularzDodawaniaTurnieju();
+                },
+                null
+                ));
 
-       
 
 
 
 
         #endregion
 
-        private ICommand raiseTournamentListSelectionChangedEvent;
-        public ICommand RaiseTournamentListSelectionChangedEvent => raiseTournamentListSelectionChangedEvent ?? (raiseTournamentListSelectionChangedEvent =
-            new RelayCommand(
-                o =>
-                {
-                    RaiseTournamentListSelectionChanged();
-                },
-                null
-                ));
+        /* private ICommand raiseTournamentListSelectionChangedEvent;
+         public ICommand RaiseTournamentListSelectionChangedEvent => raiseTournamentListSelectionChangedEvent ?? (raiseTournamentListSelectionChangedEvent =
+             new RelayCommand(
+                 o =>
+                 {
+                     RaiseTournamentListSelectionChanged();
+                 },
+                 null
+                 ));
 
-        public void RaiseTournamentListSelectionChanged()
-        {
-            if (TournamentListSelectionChanged != null)
-            {
-                TournamentListSelectionChanged(EventArgs.Empty);
-            }
-        }
+         public void RaiseTournamentListSelectionChanged()
+         {
+             if (TournamentListSelectionChanged != null)
+             {
+                 TournamentListSelectionChanged(EventArgs.Empty);
+             }
+         }
 
 
-        public delegate void TournamentListSelectionChangedHandler(EventArgs args);
+         public delegate void TournamentListSelectionChangedHandler(EventArgs args);
 
-        public event TournamentListSelectionChangedHandler TournamentListSelectionChanged;
+         public event TournamentListSelectionChangedHandler TournamentListSelectionChanged;*/
 
         #region Metody
 
