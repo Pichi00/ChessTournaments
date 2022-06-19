@@ -14,6 +14,7 @@ namespace ChessTournaments.DAL.Repozytoria
     {
         private const string DODAJ_STATUS = "INSERT INTO `statuszawodnika`(`idZawodnik`,`idTurniej`,`statusZawodnika`) VALUES "; //podczas doloczania do turnieju przez nowego zawodnika
         private const string WYSWIETL_TURNIEJE_UZYTKOWNIKA= "select * from turnieje left join statusZawodnika on turnieje.idTurnieju =statuszawodnika.idTurniej where statuszawodnika.idZawodnik=";
+        private const string USUN_ZGLOSZENIE_Z_TURNIEJU = "DELETE FROM statusZawodnika where";
         private const string WYSWIETL_ZGLOSZENIA_DO_TURNIEJU = "INSERT INTO `statusZawodnika`(`idTurniej`,`idZawodnik`,`statusZawodnika`) VALUES ";
         public static void DodajStatusDoBazy(StatusZawodnika status)
         {
@@ -23,6 +24,20 @@ namespace ChessTournaments.DAL.Repozytoria
                 connection.Open();
                 var id = command.ExecuteNonQuery();
                 connection.Close();
+            }
+        }
+
+        public static bool UsunStatusDoBazy(int idZawodnik ,int idTurniej)
+        {
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                bool stan = false;
+                MySqlCommand command = new MySqlCommand($"{USUN_ZGLOSZENIE_Z_TURNIEJU}`idZawodnik`={idZawodnik} AND `idTurniej` ={ idTurniej}", connection);
+                connection.Open();
+                var id = command.ExecuteNonQuery();
+                stan = true;
+                connection.Close();
+                return stan;
             }
         }
 

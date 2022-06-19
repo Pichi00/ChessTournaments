@@ -44,7 +44,6 @@ namespace ChessTournaments.ViewModel
                 },
                 null
                 ));
-
         public void OdswiezTurnieje(Zawodnik zawodnik)
         {
             ObservableCollection<Turniej> pobraneTurnieje = model.PobierzWszystkieTurniejeuzytkownika(zawodnik);
