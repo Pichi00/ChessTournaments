@@ -98,8 +98,7 @@ namespace ChessTournaments.ViewModel
             new RelayCommand(
                 o =>
                 {
-                    OrganizerDashboard organizerDashboard = o as OrganizerDashboard;
-                    string loginOrganizatora = organizerDashboard.ZalogowanyUzytkownik.Login;
+                    string loginOrganizatora = OrganizersTournamentsVM.ZalogowanyOrganizator.Login;
                     int idOrganizatora = turniejModel.PobierzIDOrganizatora(loginOrganizatora);
                     Turniej turniej = new Turniej(Nazwa, Miejsce, Start, Koniec, Nagrody, Regulamin, idOrganizatora);
                     if (turniejModel.DodajTurniejDoBazy(turniej))
@@ -107,6 +106,7 @@ namespace ChessTournaments.ViewModel
                         MessageBox.Show("Dodano turniej do bazy");
                         CzyscFormularzDodawaniaTurnieju();
                         TournamentListVM.OdswiezTurnieje();
+                        OrganizersTournamentsVM.OdswiezTurnieje(OrganizersTournamentsVM.ZalogowanyOrganizator);
                     }
                 },
                 null
@@ -120,6 +120,8 @@ namespace ChessTournaments.ViewModel
                     if (turniejModel.UsunTurniejZBazy(turniej))
                     {
                         MessageBox.Show("Usunięto turniej do bazy");
+                        TournamentListVM.OdswiezTurnieje();
+                        OrganizersTournamentsVM.OdswiezTurnieje(OrganizersTournamentsVM.ZalogowanyOrganizator);
                     }
 
 

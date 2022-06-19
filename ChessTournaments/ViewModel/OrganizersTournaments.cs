@@ -17,13 +17,14 @@ namespace ChessTournaments.ViewModel
     class OrganizersTournaments:TournamentListViewModel
     {
         DashboardViewModel Parent { get; set; }
+        public Organizator ZalogowanyOrganizator { get; set; }
         public OrganizersTournaments()
         {
             model = new TurniejModel();
             LoginScreen loginScreen = Application.Current.MainWindow as LoginScreen;
             Uzytkownik uzytkownik = loginScreen.loginViewModel.ZalogowanyUzytkownik;
-            Organizator organizator = new Organizator(uzytkownik.Login);
-            OdswiezTurnieje(organizator);
+            ZalogowanyOrganizator = new Organizator(uzytkownik.Login);
+            OdswiezTurnieje(ZalogowanyOrganizator);
         }
 
         public OrganizersTournaments(DashboardViewModel parent)
@@ -32,8 +33,8 @@ namespace ChessTournaments.ViewModel
             model = new TurniejModel();
             LoginScreen loginScreen = Application.Current.MainWindow as LoginScreen;
             Uzytkownik uzytkownik = loginScreen.loginViewModel.ZalogowanyUzytkownik;
-            Organizator organizator = new Organizator(uzytkownik.Login);
-            OdswiezTurnieje(organizator);
+            ZalogowanyOrganizator = new Organizator(uzytkownik.Login);
+            OdswiezTurnieje(ZalogowanyOrganizator);
         }
 
         private ICommand zaladujInformacjeOTurnieju;

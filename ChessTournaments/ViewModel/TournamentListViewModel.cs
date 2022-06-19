@@ -53,7 +53,7 @@ namespace ChessTournaments.ViewModel
         
         
 
-        public void OdswiezTurnieje() => Turnieje = model.Turnieje;
+        public void OdswiezTurnieje() => Turnieje = model.PobierzWszystkieTurnieje();
        
 
         
