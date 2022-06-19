@@ -135,13 +135,16 @@ namespace ChessTournaments.ViewModel
                 o =>
                 {
                     PlayerDashboard playerDashboard = o as PlayerDashboard;
-                    string loginZawodnika= playerDashboard.ZalogowanyUzytkownik.Login;
-                    int idZawodnika= turniejModel.PobierzIDZawodnika(loginZawodnika);
-                    int idTurniej = 0; //tutaj daj pobierz id turniej aktualnie selected w liscie
 
-                    StatusZawodnika status = new StatusZawodnika(StatusZawodnika.StatusEnum.niezaakceptowany,idZawodnika,idTurniej);
+                    string loginZawodnika = playerDashboard.ZalogowanyUzytkownik.Login;
+                    int idZawodnika = turniejModel.PobierzIDZawodnika(loginZawodnika);
+                    int idTurniej = TournamentListVM.WybranyTurniej.Id;
+
+                    MessageBox.Show(idTurniej.ToString());
+                    StatusZawodnika status = new StatusZawodnika(StatusZawodnika.StatusEnum.niezaakceptowany, idZawodnika, idTurniej);
                     RepozytoriumStatus.DodajStatusDoBazy(status);
-      
+                   
+
                 },
                 null
                 ));
