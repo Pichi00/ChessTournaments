@@ -28,6 +28,8 @@ namespace ChessTournaments.ViewModel
         ZgloszeniaModel model;
         public Organizator ZalogowanyOrganizator { get; set; }
 
+        public Zgloszenie WybraneZgloszenie { get; set; }
+
         private ObservableCollection<Zgloszenie> zgloszenia;
         public ObservableCollection<Zgloszenie> Zgloszenia
         {

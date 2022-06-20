@@ -16,6 +16,7 @@ namespace ChessTournaments.DAL.Repozytoria
         private const string WYSWIETL_TURNIEJE_UZYTKOWNIKA= "select nazwa, miasto";
         private const string WYSWIETL_ZGLOSZENIA_DO_TURNIEJU = "INSERT INTO `statusZawodnika`(`idTurniej`,`idZawodnik`,`statusZawodnika`) VALUES ";
         private const string WSZYSTKIE_STATUSY = "SELECT * FROM `statusZawodnika`";
+        private const string EDYTUJ_STATUS = "UPDATE `statusZawodnika` SET ";
         
         public static void DodajStatusDoBazy(StatusZawodnika status)
         {
@@ -43,6 +44,24 @@ namespace ChessTournaments.DAL.Repozytoria
             }
 
             return statusy;
+        }
+
+        public static bool ZaktualizujStatus(int idStatusu, StatusZawodnika.StatusEnum status)
+        {
+            bool stan = false;
+
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command = new MySqlCommand($"{EDYTUJ_STATUS} " +
+                    $"`statusZawodnika` = '{status.ToString()}' " +
+                    $"WHERE idStatusu = {idStatusu}",
+                    connection);
+                connection.Open();
+                var id = command.ExecuteNonQuery();
+                stan = true;
+                connection.Close();
+            }
+            return stan;
         }
 
        

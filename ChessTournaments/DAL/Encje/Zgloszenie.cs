@@ -19,6 +19,7 @@ namespace ChessTournaments.DAL.Encje
         public char PlecZawodnika { get; set; }
         public string NazwaTurnieju { get; set; }
         public string StatusZawodnika { get; set; }
+        public int IdStatusu { get; set; }
 
 
         #endregion
@@ -33,6 +34,7 @@ namespace ChessTournaments.DAL.Encje
             PlecZawodnika = zawodnik.Plec;
             NazwaTurnieju = turniej.Nazwa;
             StatusZawodnika = status.Status.ToString();
+            IdStatusu = status.IdStatus;
         }
 
         public Zgloszenie(MySqlDataReader reader)
@@ -44,6 +46,7 @@ namespace ChessTournaments.DAL.Encje
             PlecZawodnika = char.Parse(reader["plec"].ToString());
             NazwaTurnieju = reader["nazwa"].ToString();
             StatusZawodnika = reader["statusZawodnika"].ToString();
+            IdStatusu = int.Parse(reader["idStatusu"].ToString());
         }
 
         #endregion

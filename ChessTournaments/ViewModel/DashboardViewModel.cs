@@ -195,6 +195,22 @@ namespace ChessTournaments.ViewModel
                 },
                 null
                 ));
+
+        private ICommand zaakceptujZgloszenie;
+        public ICommand ZaakceptujZgloszenie => zaakceptujZgloszenie ?? (zaakceptujZgloszenie =
+            new RelayCommand(
+                o =>
+                {
+                    int idStatusu = PlayerListVM.WybraneZgloszenie.IdStatusu;
+                    StatusZawodnika.StatusEnum status = StatusZawodnika.StatusEnum.zaakceptowany;
+                    if(RepozytoriumStatus.ZaktualizujStatus(idStatusu, status))
+                    {
+                        MessageBox.Show("Pomyślnie zaakceptowano zgłoszenie do turnieju");
+                    }
+                },
+                null
+                ));
+
         private ICommand clearForm;
         public ICommand ClearForm => clearForm ?? (clearForm =
             new RelayCommand(

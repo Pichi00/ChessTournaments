@@ -11,7 +11,7 @@ namespace ChessTournaments.DAL.Repozytoria
 
     static class RepozytoriumZgloszenie
     {
-        private const string ZGLOSZENIA_DO_TURNIEJOW_ORGANIZATORA = "SELECT s.statusZawodnika, z.imie, z.nazwisko, z.dataUrodzenia, z.plec, z.ranking, t.nazwa " +
+        private const string ZGLOSZENIA_DO_TURNIEJOW_ORGANIZATORA = "SELECT s.statusZawodnika, s.idStatusu, z.imie, z.nazwisko, z.dataUrodzenia, z.plec, z.ranking, t.nazwa " +
             "FROM statuszawodnika s LEFT JOIN zawodnicy z ON s.idZawodnik = z.idZawodnika " +
             "LEFT JOIN turnieje t ON s.idTurniej = t.idTurnieju " +
             "LEFT JOIN organizatorzy o ON t.organizator = o.idOrganizatora " +
@@ -19,7 +19,7 @@ namespace ChessTournaments.DAL.Repozytoria
 
         public static List<Zgloszenie> PobierzZgloszeniaZBazyDlaOrganizatora(Organizator organizator)
         {
-            List<Zgloszenie> statusy = new List<Zgloszenie>();
+            List<Zgloszenie> zgloszenia = new List<Zgloszenie>();
 
             using (var connection = DBConnection.Instance.Connection)
             {
@@ -27,11 +27,11 @@ namespace ChessTournaments.DAL.Repozytoria
                 connection.Open();
                 var reader = command.ExecuteReader();
                 while (reader.Read())
-                    statusy.Add(new Zgloszenie(reader));
+                    zgloszenia.Add(new Zgloszenie(reader));
                 connection.Close();
             }
 
-            return statusy;
+            return zgloszenia;
         }
     }
 }

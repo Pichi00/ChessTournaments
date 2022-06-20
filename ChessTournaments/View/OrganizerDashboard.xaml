@@ -137,16 +137,21 @@
                     
                     <StackPanel Grid.Column="0" Grid.ColumnSpan="2">
 
-                        <StackPanel Orientation="Horizontal" Margin="10">
-                            <TextBlock Text="{Binding biezaceImie}" ></TextBlock>
-                            <TextBlock Text="{Binding biezaceNazwisko}" ></TextBlock>
-                        </StackPanel>
+                        <Button Margin="15"
+                                Command="{Binding ZaakceptujZgloszenie}"
+                                CommandParameter="{Binding PlayerListVM.WybraneZgloszenie}">
+                            Zaakceptuj zgłoszenie
+                        </Button>
 
-                        <StackPanel Orientation="Horizontal" Margin="10">
+                        <Button Margin="15">
+                            Odrzuć zgłoszenie
+                        </Button>
+
+                        <!-- <StackPanel Orientation="Horizontal" Margin="10">
                             <TextBlock Padding="10" >Status:</TextBlock>
                             <CheckBox VerticalAlignment="Center">
                             </CheckBox>
-                        </StackPanel>
+                        </StackPanel>  -->
 
 
                     </StackPanel>
