@@ -23,7 +23,7 @@ namespace ChessTournaments.ViewModel
             Uzytkownik uzytkownik = loginScreen.loginViewModel.ZalogowanyUzytkownik;
             ZalogowanyOrganizator = new Organizator(uzytkownik.Login);
             model = new ZgloszeniaModel(ZalogowanyOrganizator);
-            OdswiezZgloszenia(ZalogowanyOrganizator);
+            OdswiezZgloszenia();
         }
         ZgloszeniaModel model;
         public Organizator ZalogowanyOrganizator { get; set; }
@@ -38,15 +38,16 @@ namespace ChessTournaments.ViewModel
             {
                 zgloszenia = value;
                 onPropertyChanged(nameof(zgloszenia));
+               
             }
         }
 
-        public void OdswiezZgloszenia(Organizator organizator)
+        public void OdswiezZgloszenia()
         {
-            ObservableCollection<Zgloszenie> pobraneTurnieje = model.PobierzZgloszeniaOrganizatora(organizator);
-            if (!pobraneTurnieje.Equals(Zgloszenia))
+            ObservableCollection<Zgloszenie> pobraneZgloszenia = model.PobierzZgloszeniaOrganizatora(ZalogowanyOrganizator);
+            if (!pobraneZgloszenia.Equals(Zgloszenia))
             {
-                Zgloszenia = pobraneTurnieje;
+                Zgloszenia = pobraneZgloszenia;
             }
 
         }

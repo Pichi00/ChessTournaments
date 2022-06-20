@@ -168,8 +168,6 @@ namespace ChessTournaments.ViewModel
                     MessageBox.Show(idTurniej.ToString());
                     StatusZawodnika status = new StatusZawodnika(StatusZawodnika.StatusEnum.niezaakceptowany, idZawodnika, idTurniej);
                     RepozytoriumStatus.DodajStatusDoBazy(status);
-                   
-
                 },
                 null
                 ));
@@ -203,10 +201,27 @@ namespace ChessTournaments.ViewModel
                 {
                     int idStatusu = PlayerListVM.WybraneZgloszenie.IdStatusu;
                     StatusZawodnika.StatusEnum status = StatusZawodnika.StatusEnum.zaakceptowany;
-                    if(RepozytoriumStatus.ZaktualizujStatus(idStatusu, status))
+                    if (RepozytoriumStatus.ZaktualizujStatus(idStatusu, status))
                     {
                         MessageBox.Show("Pomyślnie zaakceptowano zgłoszenie do turnieju");
                     }
+                    PlayerListVM.OdswiezZgloszenia();
+                },
+                null
+                ));
+
+        private ICommand odrzucZgloszenie;
+        public ICommand OdrzucZgloszenie => odrzucZgloszenie ?? (odrzucZgloszenie =
+            new RelayCommand(
+                o =>
+                {
+                    int idStatusu = PlayerListVM.WybraneZgloszenie.IdStatusu;
+                    StatusZawodnika.StatusEnum status = StatusZawodnika.StatusEnum.odrzucony;
+                    if (RepozytoriumStatus.ZaktualizujStatus(idStatusu, status))
+                    {
+                        MessageBox.Show("Odrzucono zgłoszenie do turnieju");
+                    }
+                    PlayerListVM.OdswiezZgloszenia();
                 },
                 null
                 ));
