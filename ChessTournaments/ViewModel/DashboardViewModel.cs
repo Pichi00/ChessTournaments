@@ -23,14 +23,22 @@ namespace ChessTournaments.ViewModel
             Koniec = DateTime.Now;
             TournamentListVM = new TournamentListViewModel();
             OrganizersTournamentsVM = new OrganizersTournaments(this);
+
+            PlayerListVM = new PlayerListVewModel();
+
             UserTournamentsVM = new UserTournaments(this);
+
         }
 
         private TurniejModel turniejModel = new TurniejModel();
 
         public TournamentListViewModel TournamentListVM { get; set; }
         public OrganizersTournaments OrganizersTournamentsVM { get; set; }
+
+        public PlayerListVewModel PlayerListVM { get; set; }
+
         public UserTournaments UserTournamentsVM { get; set; }
+
 
 
         #region Własności
@@ -168,8 +176,6 @@ namespace ChessTournaments.ViewModel
 
                     StatusZawodnika status = new StatusZawodnika(StatusZawodnika.StatusEnum.niezaakceptowany, idZawodnika, idTurniej);
                     RepozytoriumStatus.DodajStatusDoBazy(status);
-                   
-
                 },
                 null
                 ));
@@ -229,6 +235,39 @@ namespace ChessTournaments.ViewModel
                 },
                 null
                 ));
+
+        private ICommand zaakceptujZgloszenie;
+        public ICommand ZaakceptujZgloszenie => zaakceptujZgloszenie ?? (zaakceptujZgloszenie =
+            new RelayCommand(
+                o =>
+                {
+                    int idStatusu = PlayerListVM.WybraneZgloszenie.IdStatusu;
+                    StatusZawodnika.StatusEnum status = StatusZawodnika.StatusEnum.zaakceptowany;
+                    if (RepozytoriumStatus.ZaktualizujStatus(idStatusu, status))
+                    {
+                        MessageBox.Show("Pomyślnie zaakceptowano zgłoszenie do turnieju");
+                    }
+                    PlayerListVM.OdswiezZgloszenia();
+                },
+                null
+                ));
+
+        private ICommand odrzucZgloszenie;
+        public ICommand OdrzucZgloszenie => odrzucZgloszenie ?? (odrzucZgloszenie =
+            new RelayCommand(
+                o =>
+                {
+                    int idStatusu = PlayerListVM.WybraneZgloszenie.IdStatusu;
+                    StatusZawodnika.StatusEnum status = StatusZawodnika.StatusEnum.odrzucony;
+                    if (RepozytoriumStatus.ZaktualizujStatus(idStatusu, status))
+                    {
+                        MessageBox.Show("Odrzucono zgłoszenie do turnieju");
+                    }
+                    PlayerListVM.OdswiezZgloszenia();
+                },
+                null
+                ));
+
         private ICommand clearForm;
         public ICommand ClearForm => clearForm ?? (clearForm =
             new RelayCommand(

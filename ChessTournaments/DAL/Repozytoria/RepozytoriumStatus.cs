@@ -16,6 +16,9 @@ namespace ChessTournaments.DAL.Repozytoria
         private const string WYSWIETL_TURNIEJE_UZYTKOWNIKA= "select * from turnieje left join statusZawodnika on turnieje.idTurnieju =statuszawodnika.idTurniej where statuszawodnika.idZawodnik=";
         private const string USUN_ZGLOSZENIE_Z_TURNIEJU = "DELETE FROM statusZawodnika where";
         private const string WYSWIETL_ZGLOSZENIA_DO_TURNIEJU = "INSERT INTO `statusZawodnika`(`idTurniej`,`idZawodnik`,`statusZawodnika`) VALUES ";
+        private const string WSZYSTKIE_STATUSY = "SELECT * FROM `statusZawodnika`";
+        private const string EDYTUJ_STATUS = "UPDATE `statusZawodnika` SET ";
+        
         public static void DodajStatusDoBazy(StatusZawodnika status)
         {
             using (var connection = DBConnection.Instance.Connection)
@@ -26,6 +29,44 @@ namespace ChessTournaments.DAL.Repozytoria
                 connection.Close();
             }
         }
+
+
+        public static List<StatusZawodnika> PobierzStatusyZBazy()
+        {
+            List<StatusZawodnika> statusy = new List<StatusZawodnika>();
+
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command = new MySqlCommand(WSZYSTKIE_STATUSY, connection);
+                connection.Open();
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                    statusy.Add(new StatusZawodnika(reader));
+                connection.Close();
+            }
+
+            return statusy;
+        }
+
+        public static bool ZaktualizujStatus(int idStatusu, StatusZawodnika.StatusEnum status)
+        {
+            bool stan = false;
+
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command = new MySqlCommand($"{EDYTUJ_STATUS} " +
+                    $"`statusZawodnika` = '{status.ToString()}' " +
+                    $"WHERE idStatusu = {idStatusu}",
+                    connection);
+                connection.Open();
+                var id = command.ExecuteNonQuery();
+                stan = true;
+                connection.Close();
+            }
+            return stan;
+        }
+
+       
 
         public static bool UsunStatusDoBazy(int idZawodnik ,int idTurniej)
         {
@@ -56,6 +97,7 @@ namespace ChessTournaments.DAL.Repozytoria
             }
             return turnieje;
         }
+
     };
 
 }
