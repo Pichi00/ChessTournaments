@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Expression.Interactivity.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,15 +23,23 @@ namespace ChessTournaments.ViewModel
             Koniec = DateTime.Now;
             TournamentListVM = new TournamentListViewModel();
             OrganizersTournamentsVM = new OrganizersTournaments(this);
+
             PlayerListVM = new PlayerListVewModel();
+
+            UserTournamentsVM = new UserTournaments(this);
+
         }
 
         private TurniejModel turniejModel = new TurniejModel();
 
         public TournamentListViewModel TournamentListVM { get; set; }
         public OrganizersTournaments OrganizersTournamentsVM { get; set; }
+
         public PlayerListVewModel PlayerListVM { get; set; }
-        
+
+        public UserTournaments UserTournamentsVM { get; set; }
+
+
 
         #region Własności
 
@@ -165,12 +174,45 @@ namespace ChessTournaments.ViewModel
                     int idZawodnika = turniejModel.PobierzIDZawodnika(loginZawodnika);
                     int idTurniej = TournamentListVM.WybranyTurniej.Id;
 
-                    MessageBox.Show(idTurniej.ToString());
                     StatusZawodnika status = new StatusZawodnika(StatusZawodnika.StatusEnum.niezaakceptowany, idZawodnika, idTurniej);
                     RepozytoriumStatus.DodajStatusDoBazy(status);
                 },
                 null
                 ));
+
+        private ICommand delStatus;
+
+        public ICommand DelStatus => delStatus ?? (delStatus =
+            new RelayCommand(
+            o=>
+            {
+
+                PlayerDashboard playerDashboard = o as PlayerDashboard;
+                string loginZawodnika = playerDashboard.ZalogowanyUzytkownik.Login;
+                int idZawodnika = turniejModel.PobierzIDZawodnika(loginZawodnika);
+                int idTurniej = UserTournamentsVM.WybranyTurniej.Id;
+
+                if (!RepozytoriumStatus.UsunStatusDoBazy(idZawodnika, idTurniej)){
+                    MessageBox.Show("Nie mozna usunac z bazy");
+                }
+                UserTournamentsVM.OdswiezTurnieje(UserTournamentsVM.ZalogowanyZawodnik);
+
+            },
+            null
+            ));
+
+        private ICommand zaktualizujStatus;
+        public ICommand ZaktualizujStatus => zaktualizujStatus ?? (zaktualizujStatus =
+            new RelayCommand(
+                o =>
+                {
+                    OrganizerDashboard organizerDashboard = o as OrganizerDashboard;
+                    Zawodnik zawodnik = new Zawodnik(organizerDashboard.ZalogowanyUzytkownik.Login);
+                    UserTournamentsVM.OdswiezTurnieje(zawodnik);
+                },
+                null
+                ));
+
 
         private ICommand zaktualizujTurnieje;
         public ICommand ZaktualizujTurnieje => zaktualizujTurnieje ?? (zaktualizujTurnieje =
@@ -287,6 +329,24 @@ namespace ChessTournaments.ViewModel
             Regulamin = turniej.Regulamin;
         }
 
+        private ActionCommand delregistration;
+
+        public ICommand Delregistration
+        {
+            get
+            {
+                if (delregistration == null)
+                {
+                    delregistration = new ActionCommand(PerformDelregistration);
+                }
+
+                return delregistration;
+            }
+        }
+
+        private void PerformDelregistration()
+        {
+        }
         #endregion
     }
 }

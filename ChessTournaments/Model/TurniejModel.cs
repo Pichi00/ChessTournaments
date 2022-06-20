@@ -84,6 +84,16 @@ namespace ChessTournaments.Model
             return turnieje;
         }
 
+        public ObservableCollection<Turniej> PobierzWszystkieTurniejeuzytkownika(Zawodnik zawodnik)
+        {
+            ObservableCollection<Turniej> turnieje = new ObservableCollection<Turniej>();
+            var pobraneTurnieje = RepozytoriumStatus.PobierzWszystkieTurniejeUzytkownika(zawodnik);
+            foreach (var turniej in pobraneTurnieje)
+                turnieje.Add(turniej);
+
+            return turnieje;
+        }
+
         public int PobierzIDZawodnika(string login)
         {
             return RepozytoriumZawodnik.PobierzIDZawodnika(login);

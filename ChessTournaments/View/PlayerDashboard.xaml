@@ -29,7 +29,7 @@
 
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Selector.SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding ZaladujInform  acjeOTurnieju}"/>
+                                <i:InvokeCommandAction Command="{Binding ZaladujInformacjeOTurnieju}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers> 
 
@@ -54,6 +54,14 @@
 
             </TabItem>
             <TabItem x:Name="mojeTurnieje" Header="Moje Turnieje" HorizontalAlignment="Left">
+                 <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding ZaktualizujStatus}"
+                                               CommandParameter="{Binding ElementName=organizerDashboard}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+                
+                
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5*"/>
@@ -61,12 +69,12 @@
                     </Grid.ColumnDefinitions>
 
                     <local:TournamentList Grid.Column="1" x:Name="StatusTournamentList"
-                                          DataContext="{Binding StatusPlayerList}"
+                                          DataContext="{Binding UserTournamentsVM}"
                                            >
                         <!-- Do poprawy -->
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Selector.SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding ZaladujInformacjeOTurnieju}"/>
+                                <i:InvokeCommandAction Command="{Binding PobierzWszystkieTurniejeuzytkownika}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers> 
                     </local:TournamentList>
@@ -74,13 +82,13 @@
                     <StackPanel Grid.Column="0">
 
                         <StackPanel Orientation="Horizontal" Margin="10">
-                            <TextBlock Text="{Binding TournamentListVM.WybranyTurniej.Nazwa}" ></TextBlock>
+                            <TextBlock Text="{Binding UserTournamentsVM.WybranyTurniej}" ></TextBlock>
                         </StackPanel>
 
                         <StackPanel HorizontalAlignment="Center" >
                             <Button
                            Margin="10" 
-                           Command="{Binding Delregistration}">Usun zgloszenie</Button>
+                            Command="{Binding DelStatus}" CommandParameter="{Binding ElementName=playerDashboard}">Usun zgloszenie</Button>
                         </StackPanel>
 
                     </StackPanel>
