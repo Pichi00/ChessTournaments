@@ -176,6 +176,8 @@ namespace ChessTournaments.ViewModel
 
                     StatusZawodnika status = new StatusZawodnika(StatusZawodnika.StatusEnum.niezaakceptowany, idZawodnika, idTurniej);
                     RepozytoriumStatus.DodajStatusDoBazy(status);
+
+                    UserTournamentsVM.OdswiezTurnieje(UserTournamentsVM.ZalogowanyZawodnik);
                 },
                 null
                 ));
@@ -206,9 +208,9 @@ namespace ChessTournaments.ViewModel
             new RelayCommand(
                 o =>
                 {
-                    OrganizerDashboard organizerDashboard = o as OrganizerDashboard;
-                    Zawodnik zawodnik = new Zawodnik(organizerDashboard.ZalogowanyUzytkownik.Login);
-                    UserTournamentsVM.OdswiezTurnieje(zawodnik);
+                    PlayerDashboard playerDashboard = o as PlayerDashboard;
+                    Zawodnik zawodnik = new Zawodnik(playerDashboard.ZalogowanyUzytkownik.Login);
+                    UserTournamentsVM.OdswiezTurnieje(UserTournamentsVM.ZalogowanyZawodnik);
                 },
                 null
                 ));
