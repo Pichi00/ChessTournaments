@@ -20,7 +20,8 @@ namespace ChessTournaments.DAL.Encje
 
         public override string ToString()
         {
-            return $"{Day}.{Month}.{Year}";
+            //return $"{Day}.{Month}.{Year}";
+            return $"{Year}-{Month}-{Day}";
         }
 
     }
