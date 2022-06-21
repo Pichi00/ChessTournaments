@@ -31,7 +31,8 @@ namespace ChessTournaments.ViewModel
         {
             Parent = parent;
             model = new TurniejModel();
-            LoginScreen loginScreen = Application.Current.MainWindow as LoginScreen;
+            //LoginScreen loginScreen = Application.Current.MainWindow as LoginScreen;
+            LoginScreen loginScreen = Application.Current.Windows.OfType<LoginScreen>().FirstOrDefault();
             Uzytkownik uzytkownik = loginScreen.loginViewModel.ZalogowanyUzytkownik;
             ZalogowanyOrganizator = new Organizator(uzytkownik.Login);
             OdswiezTurnieje(ZalogowanyOrganizator);

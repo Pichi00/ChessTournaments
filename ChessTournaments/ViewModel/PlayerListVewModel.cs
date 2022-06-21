@@ -19,7 +19,7 @@ namespace ChessTournaments.ViewModel
         public PlayerListVewModel()
         {
             
-            LoginScreen loginScreen = Application.Current.MainWindow as LoginScreen;
+            LoginScreen loginScreen = Application.Current.Windows.OfType<LoginScreen>().FirstOrDefault();
             Uzytkownik uzytkownik = loginScreen.loginViewModel.ZalogowanyUzytkownik;
             ZalogowanyOrganizator = new Organizator(uzytkownik.Login);
             model = new ZgloszeniaModel(ZalogowanyOrganizator);
